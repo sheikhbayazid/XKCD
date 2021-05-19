@@ -11,7 +11,8 @@ import SwiftUI
 class ComicViewModel: ObservableObject {
     @Published var comics = [Comic]()
     @Published var searchText = ""
-    @AppStorage("totalComics") var totalComics = 2450 // Default Comic number before updating from the api
+    @AppStorage("totalComics") var totalComics = 2460 // Default Comic number before updating from the api
+    @Published var sort: Int = 0
     
     
     @Published var comic = Comic.example

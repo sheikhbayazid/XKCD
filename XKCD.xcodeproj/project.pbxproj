@@ -17,6 +17,16 @@
 		4026907A2654CB36004F2AD1 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402690792654CB36004F2AD1 /* SafariView.swift */; };
 		4026907C2654CBAA004F2AD1 /* ShareSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4026907B2654CBAA004F2AD1 /* ShareSheetView.swift */; };
 		4026907E2654D313004F2AD1 /* PinchZoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4026907D2654D313004F2AD1 /* PinchZoomView.swift */; };
+		402690832655102B004F2AD1 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4026907F2655102A004F2AD1 /* ImageLoader.swift */; };
+		402690842655102B004F2AD1 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402690802655102B004F2AD1 /* AsyncImage.swift */; };
+		402690852655102B004F2AD1 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402690812655102B004F2AD1 /* ImageCache.swift */; };
+		402690862655102B004F2AD1 /* EnvironmentValues+ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402690822655102B004F2AD1 /* EnvironmentValues+ImageCache.swift */; };
+		4026908926559BEC004F2AD1 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4026908826559BEC004F2AD1 /* HomeView.swift */; };
+		4026908B26559C3E004F2AD1 /* BrowseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4026908A26559C3E004F2AD1 /* BrowseView.swift */; };
+		4026908D26559CE7004F2AD1 /* ComicDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4026908C26559CE7004F2AD1 /* ComicDetailsView.swift */; };
+		4026908F26559DBA004F2AD1 /* ComicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4026908E26559DBA004F2AD1 /* ComicView.swift */; };
+		4026909126559E57004F2AD1 /* ComicCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4026909026559E57004F2AD1 /* ComicCellView.swift */; };
+		4026909626559F50004F2AD1 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4026909526559F50004F2AD1 /* FavoritesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +42,16 @@
 		402690792654CB36004F2AD1 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 		4026907B2654CBAA004F2AD1 /* ShareSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheetView.swift; sourceTree = "<group>"; };
 		4026907D2654D313004F2AD1 /* PinchZoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinchZoomView.swift; sourceTree = "<group>"; };
+		4026907F2655102A004F2AD1 /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		402690802655102B004F2AD1 /* AsyncImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
+		402690812655102B004F2AD1 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		402690822655102B004F2AD1 /* EnvironmentValues+ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EnvironmentValues+ImageCache.swift"; sourceTree = "<group>"; };
+		4026908826559BEC004F2AD1 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		4026908A26559C3E004F2AD1 /* BrowseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseView.swift; sourceTree = "<group>"; };
+		4026908C26559CE7004F2AD1 /* ComicDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailsView.swift; sourceTree = "<group>"; };
+		4026908E26559DBA004F2AD1 /* ComicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicView.swift; sourceTree = "<group>"; };
+		4026909026559E57004F2AD1 /* ComicCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicCellView.swift; sourceTree = "<group>"; };
+		4026909526559F50004F2AD1 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,10 +85,12 @@
 			isa = PBXGroup;
 			children = (
 				400A71EA2652C877009FE0E8 /* XKCDApp.swift */,
+				400A71EC2652C877009FE0E8 /* ContentView.swift */,
 				402690762654C836004F2AD1 /* Model */,
+				402690752654C82B004F2AD1 /* View */,
 				402690782654C84F004F2AD1 /* View Model */,
+				4026908726551039004F2AD1 /* AsyncImage */,
 				402690772654C83F004F2AD1 /* Extensions */,
-				402690752654C82B004F2AD1 /* Views */,
 				400A71EE2652C87C009FE0E8 /* Assets.xcassets */,
 				400A71F32652C87C009FE0E8 /* Info.plist */,
 				400A71F02652C87C009FE0E8 /* Preview Content */,
@@ -84,15 +106,15 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		402690752654C82B004F2AD1 /* Views */ = {
+		402690752654C82B004F2AD1 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				400A71EC2652C877009FE0E8 /* ContentView.swift */,
-				402690792654CB36004F2AD1 /* SafariView.swift */,
-				4026907B2654CBAA004F2AD1 /* ShareSheetView.swift */,
-				4026907D2654D313004F2AD1 /* PinchZoomView.swift */,
+				4026909226559E8F004F2AD1 /* Home */,
+				4026909326559E9B004F2AD1 /* Browse */,
+				4026909726559F69004F2AD1 /* Favorite */,
+				4026909426559EAF004F2AD1 /* UIKit */,
 			);
-			path = Views;
+			path = View;
 			sourceTree = "<group>";
 		};
 		402690762654C836004F2AD1 /* Model */ = {
@@ -117,6 +139,54 @@
 				400A71FB2652CA02009FE0E8 /* ComicViewModel.swift */,
 			);
 			path = "View Model";
+			sourceTree = "<group>";
+		};
+		4026908726551039004F2AD1 /* AsyncImage */ = {
+			isa = PBXGroup;
+			children = (
+				402690802655102B004F2AD1 /* AsyncImage.swift */,
+				402690822655102B004F2AD1 /* EnvironmentValues+ImageCache.swift */,
+				402690812655102B004F2AD1 /* ImageCache.swift */,
+				4026907F2655102A004F2AD1 /* ImageLoader.swift */,
+			);
+			path = AsyncImage;
+			sourceTree = "<group>";
+		};
+		4026909226559E8F004F2AD1 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				4026908826559BEC004F2AD1 /* HomeView.swift */,
+				4026908E26559DBA004F2AD1 /* ComicView.swift */,
+				4026909026559E57004F2AD1 /* ComicCellView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		4026909326559E9B004F2AD1 /* Browse */ = {
+			isa = PBXGroup;
+			children = (
+				4026908A26559C3E004F2AD1 /* BrowseView.swift */,
+				4026908C26559CE7004F2AD1 /* ComicDetailsView.swift */,
+			);
+			path = Browse;
+			sourceTree = "<group>";
+		};
+		4026909426559EAF004F2AD1 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				402690792654CB36004F2AD1 /* SafariView.swift */,
+				4026907B2654CBAA004F2AD1 /* ShareSheetView.swift */,
+				4026907D2654D313004F2AD1 /* PinchZoomView.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		4026909726559F69004F2AD1 /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				4026909526559F50004F2AD1 /* FavoritesView.swift */,
+			);
+			path = Favorite;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,11 +258,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4026908F26559DBA004F2AD1 /* ComicView.swift in Sources */,
+				402690852655102B004F2AD1 /* ImageCache.swift in Sources */,
+				402690842655102B004F2AD1 /* AsyncImage.swift in Sources */,
+				4026908B26559C3E004F2AD1 /* BrowseView.swift in Sources */,
+				4026908D26559CE7004F2AD1 /* ComicDetailsView.swift in Sources */,
+				4026908926559BEC004F2AD1 /* HomeView.swift in Sources */,
 				4026907E2654D313004F2AD1 /* PinchZoomView.swift in Sources */,
 				400A71ED2652C877009FE0E8 /* ContentView.swift in Sources */,
+				4026909626559F50004F2AD1 /* FavoritesView.swift in Sources */,
+				402690862655102B004F2AD1 /* EnvironmentValues+ImageCache.swift in Sources */,
 				400A71FA2652C891009FE0E8 /* Comic.swift in Sources */,
 				400A71FC2652CA02009FE0E8 /* ComicViewModel.swift in Sources */,
 				4026907426545942004F2AD1 /* String+Extension.swift in Sources */,
+				4026909126559E57004F2AD1 /* ComicCellView.swift in Sources */,
+				402690832655102B004F2AD1 /* ImageLoader.swift in Sources */,
 				4026907A2654CB36004F2AD1 /* SafariView.swift in Sources */,
 				400A71EB2652C877009FE0E8 /* XKCDApp.swift in Sources */,
 				4026907C2654CBAA004F2AD1 /* ShareSheetView.swift in Sources */,

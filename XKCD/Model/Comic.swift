@@ -58,6 +58,8 @@ struct ComicResponse: Identifiable, Decodable, Comparable {
         lhs.id < rhs.id
     }
     
+    static let example = ComicResponse(id: 1, safeTitle: "safeTitle", title: "title", transcript: "transcript", alt: "alt", sourceUrl: "sourceUrl", explainUrl: "explainUrl", imgs: [ImageDetails(height: 250, width: 250, sourceUrl: "www.apple.com")])
+    
 }
 
 struct ImageDetails: Decodable, Hashable {
