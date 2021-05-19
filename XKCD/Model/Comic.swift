@@ -58,11 +58,12 @@ struct ComicResponse: Identifiable, Decodable, Comparable {
         lhs.id < rhs.id
     }
     
-    struct ImageDetails: Decodable, Hashable {
-        let height: Int
-        let width: Int
-        let sourceUrl: String
-    }
+}
+
+struct ImageDetails: Decodable, Hashable {
+    let height: Int
+    let width: Int
+    let sourceUrl: String
 }
 
 
