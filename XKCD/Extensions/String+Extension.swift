@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension String {
-    func load() -> UIImage {
+    func loadUIImage() -> UIImage {
         do {
             guard let url = URL(string: self) else { return UIImage()}
             
@@ -20,6 +20,24 @@ extension String {
         }
         
         return UIImage()
+    }
+}
+
+
+
+extension String {
+    func loadImageData() -> Data? {
+        do {
+            guard let url = URL(string: self) else { return Data()}
+            
+            let data = try Data(contentsOf: url)
+            
+            return data
+        } catch {
+            
+        }
+        
+        return Data()
     }
 }
 

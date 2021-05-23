@@ -19,17 +19,18 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var viewModel = ComicViewModel()
-    //    @State private var comic = Comic.example
+    
+    @Environment(\.managedObjectContext) var moc
     //
     var body: some View {
         TabView {
-            HomeView()
+            HomeView(viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "rectangle.3.offgrid.bubble.left")
                     Text("Comics")
                 }
             
-            BrowseView()
+            BrowseView(viewModel: viewModel)
                 .tabItem {
                     Image(systemName: "rectangle.and.text.magnifyingglass")
                     Text("Browse")
@@ -42,6 +43,7 @@ struct ContentView: View {
                 }
         }.accentColor(.primary)
         .preferredColorScheme(.dark)
+        .environment(\.managedObjectContext, self.moc)
     }
     
 }

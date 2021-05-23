@@ -58,7 +58,7 @@ struct ComicResponse: Identifiable, Decodable, Comparable {
         lhs.id < rhs.id
     }
     
-    static let example = ComicResponse(id: 1, safeTitle: "safeTitle", title: "title", transcript: "transcript", alt: "alt", sourceUrl: "sourceUrl", explainUrl: "explainUrl", imgs: [ImageDetails(height: 250, width: 250, sourceUrl: "www.apple.com")])
+    static let example = ComicResponse(id: 1, safeTitle: "safeTitle", title: "title", transcript: "transcript", alt: "In Dimensional Chess, every move is annotated", sourceUrl: "sourceUrl", explainUrl: "explainUrl", imgs: [ImageDetails(height: 250, width: 250, sourceUrl: "www.apple.com")])
     
 }
 
@@ -75,17 +75,18 @@ struct Comic: Decodable {
     let year: String
     let safe_title: String
     let alt: String
+    let transcript: String
     let img: String
     let title: String
     let day: String
     
     
     static var example: Comic {
-        Comic(month: "", num: 0, year: "", safe_title: "", alt: "", img: "", title: "", day: "")
+        Comic(month: "", num: 0, year: "", safe_title: "", alt: "", transcript: "", img: "", title: "", day: "")
     }
     
     static var example2: Comic {
-        Comic(month: "05", num: 123, year: "2021", safe_title: "Safe Title", alt: "Alt", img: "image url", title: "Title", day: "02")
+        Comic(month: "05", num: 123, year: "2021", safe_title: "Safe Title", alt: "Alt", transcript: "", img: "image url", title: "Title", day: "02")
     }
 }
 

@@ -9,29 +9,23 @@ import SwiftUI
 
 struct ComicView: View {
     let comicNumber: Int
+    @Environment(\.managedObjectContext) private var moc
     
     @State private var comic = Comic.example
     
     var body: some View {
-        ComicCellView(comic: comic)
-            .onAppear (perform: loadComic)
-        
+        ComicCellView(comic: fetchData(for: comicNumber))
+            .environment(\.managedObjectContext, self.moc)
     }
     
     
-    func loadComic() {
-        fetchData(for: comicNumber)
-    }
-    
-    
-    func fetchData(for number: Int) {
+    func fetchData(for number: Int) -> Comic {
         guard let url = URL(string: "https://xkcd.com/\(number)/info.0.json") else {
             print("Invalid URL")
-            return
+            return comic
         }
         
         let session = URLSession(configuration: .default)
-        
         session.dataTask(with: url) { data, response, error in
             if error == nil {
                 let decoder = JSONDecoder()
@@ -40,7 +34,7 @@ struct ComicView: View {
                     do {
                         let decodedData = try decoder.decode(Comic.self, from: data)
                         DispatchQueue.main.async {
-                            print(decodedData)
+                            //print(decodedData)
                             self.comic = decodedData
                         }
                     } catch {
@@ -49,6 +43,8 @@ struct ComicView: View {
                 }
             }
         }.resume()
+        
+        return comic
     }
 }
 

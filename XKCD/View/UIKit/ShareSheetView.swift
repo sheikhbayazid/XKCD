@@ -25,3 +25,10 @@ struct ShareSheetView_Previews: PreviewProvider {
         ShareSheetView(items: [])
     }
 }
+
+
+func shareSheet(for items: [Any]) {
+    let activityController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+    
+    UIApplication.shared.windows.first?.rootViewController?.present(activityController, animated: true, completion: nil)
+}
