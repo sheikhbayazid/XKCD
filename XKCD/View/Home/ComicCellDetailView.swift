@@ -8,19 +8,20 @@
 import SwiftUI
 
 struct ComicCellDetailView: View {
-    let comic: Comic
-    
     @Environment(\.managedObjectContext) private var moc
     @FetchRequest(entity: Favorite.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Favorite.title, ascending: true),]) var favorites: FetchedResults<Favorite>
+    
+    let comic: Comic
     
     @State private var isFavorite = false
     @State private var isShareSheetShowing = false
     @State private var isSheetShowing = false
     
     var body: some View {
-        // MARK: - Share and Favorite Button
+        
         VStack(spacing: 10) {
             HStack {
+                // Share Button
                 Button(action: {
                     self.isShareSheetShowing = true
                     shareSheet(for: [comic.img.loadUIImage()])
@@ -32,6 +33,7 @@ struct ComicCellDetailView: View {
                 
                 Spacer()
                 
+                // Favorite Button
                 Button(action: {
                     withAnimation(.spring()) {
                         isFavorite.toggle()
@@ -50,7 +52,7 @@ struct ComicCellDetailView: View {
                 
             }
             
-            // MARK: - Comic Details
+            // Comic Details
             HStack {
                 VStack(alignment: .leading, spacing: 5) {
                     

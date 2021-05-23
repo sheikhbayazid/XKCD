@@ -18,10 +18,9 @@ import SwiftUI
 
 
 struct ContentView: View {
+    @Environment(\.managedObjectContext) var moc
     @ObservedObject var viewModel = ComicViewModel()
     
-    @Environment(\.managedObjectContext) var moc
-    //
     var body: some View {
         TabView {
             HomeView(viewModel: viewModel)
@@ -41,6 +40,7 @@ struct ContentView: View {
                     Image(systemName: "heart.fill")
                     Text("Favorites")
                 }
+            
         }.accentColor(.primary)
         .preferredColorScheme(.dark)
         .environment(\.managedObjectContext, self.moc)

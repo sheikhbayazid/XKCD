@@ -9,37 +9,25 @@ import SwiftUI
 
 struct HomeView: View {
     @ObservedObject var viewModel: ComicViewModel
-    @State private var comic = Comic.example
-    
-    @Environment(\.managedObjectContext) private var moc
-    
-    //    init() {
-    //        UINavigationBar.appearance().largeTitleTextAttributes = [.font : UIFont(name: "xkcd", size: 30)!]
-    //        UINavigationBar.appearance().titleTextAttributes = [.font : UIFont(name: "xkcd", size: 20)!]
-    //
-    //    }
     
     var comics: Array<Int> {
         if viewModel.sort == 0 {
-            return Array(stride(from: viewModel.totalComics, to: 1, by: -1))
+            return Array(stride(from: viewModel.totalComics, to: 1, by: -1)) // Latest comics
         } else if viewModel.sort == 1 {
-            return Array(1...viewModel.totalComics)
+            return Array(1...viewModel.totalComics) // Earliest comics
         }
-        
-        return Array(stride(from: viewModel.totalComics, to: 1, by: -1))
+        return Array(stride(from: viewModel.totalComics, to: 1, by: -1)) // Default latest comics
     }
+    
     
     var body: some View {
         VStack(spacing: 10) {
             HeaderView(viewModel: viewModel)
             
-            Divider()
-            
             ScrollView {
                 LazyVStack {
                     ForEach(comics, id: \.self) { number in
                         ComicView(comicNumber: number)
-                            .environment(\.managedObjectContext, self.moc)
                     }
                 }
             }
@@ -61,25 +49,30 @@ fileprivate struct HeaderView: View {
     @ObservedObject var viewModel: ComicViewModel
     
     var body: some View {
-        HStack {
-            Text("XKCD Comics")
-                .font(.custom("xkcd", size: 26))
-            
-            Spacer()
-            
-            Menu {
-                Picker(selection: $viewModel.sort, label: Text("Sorting options")) {
-                    Text("Latest").tag(0)
-                    Text("Earliest").tag(1)
+        VStack {
+            HStack {
+                Text("XKCD Comics")
+                    .font(.custom("xkcd", size: 26))
+                
+                Spacer()
+                
+                // Filter/Sort menu button
+                Menu {
+                    Picker(selection: $viewModel.sort, label: Text("Filter options")) {
+                        Text("Latest").tag(0)
+                        Text("Earliest").tag(1)
+                    }
+                }
+                label: {
+                    Image(systemName: "line.horizontal.3.decrease.circle")
+                        .font(.title)
                 }
             }
-            label: {
-                Image(systemName: "line.horizontal.3.decrease.circle")
-                    .font(.title)
-            }
+            .padding(.horizontal)
+            .padding(.vertical, 10)
+            
+            Divider()
         }
-        .padding(.horizontal)
-        .padding(.vertical, 10)
         
     }
 }

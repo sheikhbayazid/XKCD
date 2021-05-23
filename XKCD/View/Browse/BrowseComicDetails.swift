@@ -1,5 +1,5 @@
 //
-//  FavoriteDetailView.swift
+//  BrowseComicDetails.swift
 //  XKCD
 //
 //  Created by Sheikh Bayazid on 5/23/21.
@@ -7,31 +7,12 @@
 
 import SwiftUI
 
-struct FavoriteDetailView: View {
-    let item: FetchedResults<Favorite>.Element
-    @State var image: Data = .init(count: 0)
-    
+struct BrowseComicDetails: View {
+    let comic: ComicResponse
     @State private var isSafariShowing = false
-    @State private var isShareSheetShowing = false
-    
-    var transcript: String {
-        item.transcript ?? ""
-    }
-    
-    var navigationTitle: String {
-        return "\(item.num) \(item.title ?? "")"
-    }
     
     var body: some View {
-        ScrollView {
-            Spacer()
-            
-            Image(uiImage: UIImage(data: item.image ?? self.image)!)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .pinchToZoom()
-            
-            
+        VStack {
             HStack(spacing: 0) {
                 Text("Go to comic")
                 
@@ -45,23 +26,23 @@ struct FavoriteDetailView: View {
             }.font(.subheadline)
             .padding(.top, 2)
             .fullScreenCover(isPresented: $isSafariShowing) {
-                SafariView(url: URL(string: "https://www.explainxkcd.com/wiki/index.php/\(item.num)")!)
+                SafariView(url: URL(string: "https://www.explainxkcd.com/wiki/index.php/\(comic.id)")!)
                     .ignoresSafeArea()
                     .preferredColorScheme(.dark)
             }
             
             HStack {
                 VStack(alignment: .leading, spacing: 10) {
-                    Text(item.alt ?? "")
+                    Text(comic.alt)
                         .font(.headline)
                     
-                    if !transcript.isEmpty {
+                    if !comic.transcript.isEmpty {
                         VStack(alignment: .leading, spacing: 2) {
                             Text("Transcript:")
                                 .fontWeight(.medium)
                                 .font(.subheadline)
                             
-                            Text("\(transcript)")
+                            Text("\(comic.transcript)")
                                 .font(.subheadline)
                         }.foregroundColor(.secondary)
                     }
@@ -75,20 +56,14 @@ struct FavoriteDetailView: View {
             .background(Color.secondary.opacity(0.1))
             .cornerRadius(10)
             .padding(.top)
-            
+            .padding(.horizontal)
         }
-        .padding()
-        .navigationBarTitle(Text(navigationTitle), displayMode: .inline)
-        .navigationBarItems(
-            trailing:
-                Button(action: {
-                    self.isShareSheetShowing = true
-                    shareSheet(for: [item.image ?? UIImage()])
-                    
-                }, label: {
-                    Image(systemName: "square.and.arrow.up")
-                        .font(.title2)
-                })
-        )
+    }
+}
+
+
+struct BrowseComicDetails_Previews: PreviewProvider {
+    static var previews: some View {
+        BrowseComicDetails(comic: ComicResponse.example)
     }
 }

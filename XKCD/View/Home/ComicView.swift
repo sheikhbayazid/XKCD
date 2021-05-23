@@ -8,18 +8,15 @@
 import SwiftUI
 
 struct ComicView: View {
-    let comicNumber: Int
-    @Environment(\.managedObjectContext) private var moc
-    
     @State private var comic = Comic.example
+    let comicNumber: Int
     
     var body: some View {
-        ComicCellView(comic: fetchData(for: comicNumber))
-            .environment(\.managedObjectContext, self.moc)
+        ComicCellView(comic: fetchComicData(for: comicNumber))
     }
     
     
-    func fetchData(for number: Int) -> Comic {
+    func fetchComicData(for number: Int) -> Comic {
         guard let url = URL(string: "https://xkcd.com/\(number)/info.0.json") else {
             print("Invalid URL")
             return comic

@@ -30,7 +30,10 @@
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UILaunchScreen</key>
-	<dict/>
+	<dict>
+		<key>UIColorName</key>
+		<string>LaunchScreen</string>
+	</dict>
 	<key>UIAppFonts</key>
 	<array>
 		<string>xkcd.otf</string>

@@ -11,28 +11,28 @@ struct BrowseView: View {
     @ObservedObject var viewModel: ComicViewModel
     let columns = Array(repeating: GridItem(.flexible()), count: 3)
     
-    @Environment(\.managedObjectContext) private var moc
-    
     var body: some View {
         NavigationView {
             VStack(spacing: 5) {
-                NavBarView(viewModel: viewModel)
+                NavSearchBarView(viewModel: viewModel)
                 
                 Spacer()
                 
-                if viewModel.serverError {
-                    ErrorMessageView()
-                } else {
+                ZStack {
                     ScrollView {
                         LazyVGrid(columns: columns) {
                             BrowseComicsView(viewModel: viewModel)
-                                .environment(\.managedObjectContext, self.moc)
                         }
                     }
-                    .padding(.top, 1) // To stop scrolling flickering
+                    
+                    if viewModel.serverError {
+                        ErrorMessage()
+                    }
                 }
+                
             }.navigationBarHidden(true)
-            .padding()
+            .padding(.horizontal)
+            .padding(.vertical, 5)
         }
     }
     
@@ -45,13 +45,12 @@ struct BrowseView_Previews: PreviewProvider {
 }
 
 
-struct ErrorMessageView: View {
+struct ErrorMessage: View {
     var body: some View {
         Text("Something went wrong. Please try again later.")
             .fontWeight(.medium)
+            .font(.subheadline)
             .foregroundColor(.secondary)
-            .multilineTextAlignment(.center)
             .padding(.horizontal)
-            .padding(.top, 60)
     }
 }

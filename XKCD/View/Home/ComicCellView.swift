@@ -9,15 +9,14 @@ import SwiftUI
 
 struct ComicCellView: View {
     let comic: Comic
-    @Environment(\.managedObjectContext) private var moc
     
     var loadedImage: some View {
         AsyncImage(url: URL(string: comic.img)!, placeholder: { Color.gray.opacity(0.15) }) { image in
-            
             Image(uiImage: image)
                 .resizable()
         }
     }
+    
     
     var body: some View {
         VStack(spacing: 8) {
@@ -27,27 +26,15 @@ struct ComicCellView: View {
                 loadedImage
                     .aspectRatio(contentMode: .fit)
                     .cornerRadius(5)
-                    .frame(maxWidth: Screen.width) // , maxHeight: Screen.height * 0.6
+                    .frame(maxWidth: Screen.width)
                     .pinchToZoom()
-                //                    .onTapGesture(count: 2) {
-                //                        withAnimation(.spring()) {
-                //                            isFavorite = true
-                //                        }
-                //                    }
                 
                 ComicCellDetailView(comic: comic)
-                    .environment(\.managedObjectContext, self.moc)
                 
                 Divider()
             }
-            
-            
-            
         }
     }
-    
-    
-    
 }
 
 

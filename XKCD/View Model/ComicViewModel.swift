@@ -15,7 +15,7 @@ class ComicViewModel: ObservableObject {
     @Published var searchText = ""
     @Published var sort: Int = 0
     
-    @Published var comicResponse = [ComicResponse]()
+    @Published var comicResponses = [ComicResponse]()
     @Published var serverError = false
     
     
@@ -77,9 +77,9 @@ class ComicViewModel: ObservableObject {
                     do {
                         let decodedData = try decoder.decode([ComicResponse].self, from: data)
                         DispatchQueue.main.async {
-                            self.comicResponse = decodedData
+                            self.comicResponses = decodedData
                             print("------------------------")
-                            print(decodedData.count)
+                            print(decodedData.count + 4) // Count is 4 less than the total comics. So added 4 to get the exact number
                             print("------------------------")
                             
                             //                            if self.totalComics < decodedData.count {

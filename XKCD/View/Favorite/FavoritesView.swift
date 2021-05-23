@@ -15,29 +15,39 @@ struct FavoritesView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                HeaderView()
-                Spacer()
+            ZStack {
+                VStack {
+                    HeaderView()
+                    Spacer()
+                    
+                    // MARK: - Issue: List + HeaderView in VStack:- Auto select issue when back from navigation link destination.
+                    List {
+                        ForEach(favorites) { item in
+                            NavigationLink(
+                                destination: FavoriteDetailView(item: item),
+                                
+                                label: {
+                                    VStack(alignment: .leading, spacing: 2) {
+                                        Text("#\(item.num): " + (item.title ?? ""))
+                                            .font(.headline)
+                                        
+                                        Text(item.alt ?? "")
+                                            .foregroundColor(.secondary)
+                                            .lineLimit(2)
+                                    }
+                                })
+                        }
+                        .onDelete(perform: deleteComic)
+                    }.listStyle(PlainListStyle())
+                    .padding(.top)
+                }
                 
-                // MARK: - Using List in VStack - Auto select issue when back from navigation link.
-                List {
-                    ForEach(favorites) { item in
-                        NavigationLink(
-                            destination: FavoriteDetailView(item: item),
-                            
-                            label: {
-                                VStack(alignment: .leading, spacing: 2) {
-                                    Text("#\(item.num): " + (item.title ?? ""))
-                                        .font(.headline)
-                                    
-                                    Text(item.alt ?? "")
-                                        .foregroundColor(.secondary)
-                                        .lineLimit(2)
-                                }
-                            })
-                    }
-                    .onDelete(perform: deleteComic)
-                }.listStyle(PlainListStyle())
+                if favorites.isEmpty {
+                    Text("You haven't added anything yet!")
+                        .fontWeight(.medium)
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
             }
             .navigationBarHidden(true)
         }
@@ -46,8 +56,6 @@ struct FavoritesView: View {
     
     func deleteComic(offsets: IndexSet) {
         withAnimation {
-            //offsets.map { favorites[$0] }.forEach(moc.delete)
-            //alternative deletion without map
             for index in offsets {
                 let favorite = favorites[index]
                 moc.delete(favorite)
