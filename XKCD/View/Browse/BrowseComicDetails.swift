@@ -23,7 +23,8 @@ struct BrowseComicDetails: View {
                         self.isSafariShowing = true
                     }
                 
-            }.font(.subheadline)
+            }
+            .font(.subheadline)
             .padding(.top, 2)
             .fullScreenCover(isPresented: $isSafariShowing) {
                 SafariView(url: URL(string: "https://www.explainxkcd.com/wiki/index.php/\(comic.id)")!)
@@ -39,17 +40,16 @@ struct BrowseComicDetails: View {
                     if !comic.transcript.isEmpty {
                         VStack(alignment: .leading, spacing: 2) {
                             Text("Transcript:")
-                                .fontWeight(.medium)
-                                .font(.subheadline)
+                                .fontWeight(.semibold)
                             
                             Text("\(comic.transcript)")
-                                .font(.subheadline)
-                        }.foregroundColor(.secondary)
+                        }
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
                     }
                 }
                 
                 Spacer()
-                
             }
             .padding(.horizontal, 15)
             .padding(.vertical, 10)
@@ -61,9 +61,10 @@ struct BrowseComicDetails: View {
     }
 }
 
-
 struct BrowseComicDetails_Previews: PreviewProvider {
     static var previews: some View {
         BrowseComicDetails(comic: ComicResponse.example)
+            .padding()
+            .previewLayout(.sizeThatFits)
     }
 }

@@ -20,17 +20,20 @@ struct BrowseView: View {
                 
                 ZStack {
                     ScrollView {
+                        // Loading all comics lazily
                         LazyVGrid(columns: columns) {
                             BrowseComicsView(viewModel: viewModel)
                         }
                     }
                     
+                    // Showing error message if there's any server/decoding failure
                     if viewModel.serverError {
                         ErrorMessage()
                     }
                 }
                 
-            }.navigationBarHidden(true)
+            }
+            .navigationBarHidden(true)
             .padding(.horizontal)
             .padding(.vertical, 5)
         }
@@ -40,10 +43,15 @@ struct BrowseView: View {
 
 struct BrowseView_Previews: PreviewProvider {
     static var previews: some View {
-        BrowseView(viewModel: ComicViewModel())
+        Group {
+            ErrorMessage()
+                .padding()
+                .previewLayout(.sizeThatFits)
+            
+            BrowseView(viewModel: ComicViewModel())
+        }
     }
 }
-
 
 struct ErrorMessage: View {
     var body: some View {

@@ -11,7 +11,6 @@ struct BrowseComicDetailView: View {
     let comic: ComicResponse
     var imageURL = ""
     
-    
     init(comic: ComicResponse) {
         self.comic = comic
         
@@ -38,13 +37,16 @@ struct BrowseComicDetailView: View {
 
 struct BrowseComicDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            BrowseComicDetailView(comic: ComicResponse.example)
+        Group {
+            NavigationView {
+                BrowseComicDetailView(comic: ComicResponse.example)
+            }
+            
+            ImageView(url: "test")
+                .previewLayout(.sizeThatFits)
         }
     }
 }
-
-
 
 fileprivate struct ImageView: View {
     let url: String

@@ -36,6 +36,7 @@
 		4055A7EA265A344100EC55ED /* FavoriteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4055A7E9265A344100EC55ED /* FavoriteDetailView.swift */; };
 		40CC0E4E265AC36300F4980F /* BrowseComicDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CC0E4D265AC36300F4980F /* BrowseComicDetails.swift */; };
 		40CC0E50265AC65000F4980F /* NavBarButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CC0E4F265AC65000F4980F /* NavBarButtonsView.swift */; };
+		40CC0E5C265C83EE00F4980F /* FavoriteComicCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CC0E5B265C83EE00F4980F /* FavoriteComicCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		4055A7E9265A344100EC55ED /* FavoriteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDetailView.swift; sourceTree = "<group>"; };
 		40CC0E4D265AC36300F4980F /* BrowseComicDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseComicDetails.swift; sourceTree = "<group>"; };
 		40CC0E4F265AC65000F4980F /* NavBarButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarButtonsView.swift; sourceTree = "<group>"; };
+		40CC0E5B265C83EE00F4980F /* FavoriteComicCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteComicCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,13 +107,13 @@
 				400A71EA2652C877009FE0E8 /* XKCDApp.swift */,
 				400A71EC2652C877009FE0E8 /* ContentView.swift */,
 				402690762654C836004F2AD1 /* Model */,
-				402690752654C82B004F2AD1 /* View */,
 				402690782654C84F004F2AD1 /* View Model */,
+				402690752654C82B004F2AD1 /* View */,
 				4026908726551039004F2AD1 /* AsyncImage */,
 				402690772654C83F004F2AD1 /* Extensions */,
 				4055A7E32659A03600EC55ED /* CoreData */,
+				40CC0E51265AD3C900F4980F /* Font */,
 				400A71EE2652C87C009FE0E8 /* Assets.xcassets */,
-				404AD2322656F3760080FFA4 /* xkcd.otf */,
 				400A71F32652C87C009FE0E8 /* Info.plist */,
 				400A71F02652C87C009FE0E8 /* Preview Content */,
 			);
@@ -210,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				4026909526559F50004F2AD1 /* FavoritesView.swift */,
+				40CC0E5B265C83EE00F4980F /* FavoriteComicCellView.swift */,
 				4055A7E9265A344100EC55ED /* FavoriteDetailView.swift */,
 			);
 			path = Favorite;
@@ -224,6 +227,14 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
+		40CC0E51265AD3C900F4980F /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				404AD2322656F3760080FFA4 /* xkcd.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -231,6 +242,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 400A71F62652C87C009FE0E8 /* Build configuration list for PBXNativeTarget "XKCD" */;
 			buildPhases = (
+				40CC0E5A265BFBC300F4980F /* Run SwiftLint */,
 				400A71E32652C877009FE0E8 /* Sources */,
 				400A71E42652C877009FE0E8 /* Frameworks */,
 				400A71E52652C877009FE0E8 /* Resources */,
@@ -289,6 +301,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		40CC0E5A265BFBC300F4980F /* Run SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		400A71E32652C877009FE0E8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -301,6 +334,7 @@
 				4055A7C22659850A00EC55ED /* ComicCellDetailView.swift in Sources */,
 				402690842655102B004F2AD1 /* AsyncImage.swift in Sources */,
 				4026908B26559C3E004F2AD1 /* BrowseView.swift in Sources */,
+				40CC0E5C265C83EE00F4980F /* FavoriteComicCellView.swift in Sources */,
 				4026908D26559CE7004F2AD1 /* BrowseComicDetailView.swift in Sources */,
 				40150FEE26592FF300F27B1F /* NavSearchBarView.swift in Sources */,
 				4026908926559BEC004F2AD1 /* HomeView.swift in Sources */,
@@ -449,7 +483,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"XKCD/Preview Content\"";
-				DEVELOPMENT_TEAM = SDJDQ86DG5;
+				DEVELOPMENT_TEAM = 9342WVGPMD;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = XKCD/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -471,7 +505,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"XKCD/Preview Content\"";
-				DEVELOPMENT_TEAM = SDJDQ86DG5;
+				DEVELOPMENT_TEAM = 9342WVGPMD;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = XKCD/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

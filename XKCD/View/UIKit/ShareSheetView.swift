@@ -23,9 +23,10 @@ struct ShareSheetView: UIViewControllerRepresentable {
 struct ShareSheetView_Previews: PreviewProvider {
     static var previews: some View {
         ShareSheetView(items: [])
+            .preferredColorScheme(.dark)
+            .previewLayout(.sizeThatFits)
     }
 }
-
 
 func shareSheet(for items: [Any]) {
     let activityController = UIActivityViewController(activityItems: items, applicationActivities: nil)

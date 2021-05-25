@@ -19,7 +19,6 @@ struct HomeView: View {
         return Array(stride(from: viewModel.totalComics, to: 1, by: -1)) // Default latest comics
     }
     
-    
     var body: some View {
         VStack(spacing: 10) {
             HeaderView(viewModel: viewModel)
@@ -32,18 +31,20 @@ struct HomeView: View {
                 }
             }
         }
-        
     }
-    
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(viewModel: ComicViewModel())
-            .preferredColorScheme(.dark)
+        Group {
+            HeaderView(viewModel: ComicViewModel())
+                .previewLayout(.sizeThatFits)
+            
+            HomeView(viewModel: ComicViewModel())
+                .preferredColorScheme(.dark)
+        }
     }
 }
-
 
 fileprivate struct HeaderView: View {
     @ObservedObject var viewModel: ComicViewModel
@@ -73,6 +74,5 @@ fileprivate struct HeaderView: View {
             
             Divider()
         }
-        
     }
 }

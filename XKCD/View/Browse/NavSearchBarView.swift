@@ -27,7 +27,6 @@ struct NavSearchBarView: View {
                                 .foregroundColor(.secondary)
                         })
                     }
-                    
                 }
                 .padding(.horizontal, 15)
                 .padding(.vertical, 10)
@@ -35,18 +34,17 @@ struct NavSearchBarView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 10))
             }
             
-            
             Menu {
                 Picker(selection: $viewModel.sort, label: Text("Sort by")) {
                     Text("Latest").tag(0)
                     Text("Earliest").tag(1)
                 }
             }
+            
             label: {
                 Image(systemName: "line.horizontal.3.decrease.circle")
                     .font(.title)
             }
-            
         }
     }
 }
@@ -54,5 +52,7 @@ struct NavSearchBarView: View {
 struct NavSearchBarView_Previews: PreviewProvider {
     static var previews: some View {
         NavSearchBarView(viewModel: ComicViewModel())
+            .padding()
+            .previewLayout(.sizeThatFits)
     }
 }

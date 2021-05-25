@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct ComicView: View {
-    @State private var comic = Comic.example
     let comicNumber: Int
+    @State private var comic = Comic.example
     
     var body: some View {
         ComicCellView(comic: fetchComicData(for: comicNumber))
     }
     
-    
+    // Fetching data from this view uses less memory than using fetching functions from view model
     func fetchComicData(for number: Int) -> Comic {
         guard let url = URL(string: "https://xkcd.com/\(number)/info.0.json") else {
             print("Invalid URL")
@@ -23,7 +23,7 @@ struct ComicView: View {
         }
         
         let session = URLSession(configuration: .default)
-        session.dataTask(with: url) { data, response, error in
+        session.dataTask(with: url) { data, _, error in
             if error == nil {
                 let decoder = JSONDecoder()
                 
@@ -31,7 +31,6 @@ struct ComicView: View {
                     do {
                         let decodedData = try decoder.decode(Comic.self, from: data)
                         DispatchQueue.main.async {
-                            //print(decodedData)
                             self.comic = decodedData
                         }
                     } catch {

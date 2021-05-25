@@ -11,15 +11,19 @@ struct ComicCellView: View {
     let comic: Comic
     
     var loadedImage: some View {
-        AsyncImage(url: URL(string: comic.img)!, placeholder: { Color.gray.opacity(0.15) }) { image in
+        AsyncImage(url: URL(string: comic.img)!, placeholder: {
+            ZStack {
+                Color.gray.opacity(0.15)
+                ProgressView()
+            }
+        }) { image in
             Image(uiImage: image)
                 .resizable()
         }
     }
     
-    
     var body: some View {
-        VStack(spacing: 8) {
+        VStack {
             Spacer()
             
             if !comic.img.isEmpty {
@@ -36,7 +40,6 @@ struct ComicCellView: View {
         }
     }
 }
-
 
 struct ComicCellView_Previews: PreviewProvider {
     static var previews: some View {

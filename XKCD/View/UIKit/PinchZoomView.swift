@@ -9,7 +9,6 @@ import UIKit
 import SwiftUI
 
 class PinchZoomView: UIView {
-    
     weak var delegate: PinchZoomViewDelgate?
     
     private(set) var scale: CGFloat = 0 {

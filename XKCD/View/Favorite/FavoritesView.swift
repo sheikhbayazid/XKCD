@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FavoritesView: View {
     @Environment(\.managedObjectContext) private var moc
-    @FetchRequest(entity: Favorite.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Favorite.title, ascending: true),]) var favorites: FetchedResults<Favorite>
+    @FetchRequest(entity: Favorite.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Favorite.title, ascending: true)]) var favorites: FetchedResults<Favorite>
     
     @State var image: Data = .init(count: 0)
     
@@ -20,40 +20,32 @@ struct FavoritesView: View {
                     HeaderView()
                     Spacer()
                     
-                    // MARK: - Issue: List + HeaderView in VStack:- Auto select issue when back from navigation link destination.
+                    // Issue: List + HeaderView in VStack:- Auto select issue when back from navigation link destination.
+                    // Fix: - Using only list in the navigation view solves the problem but limits custom header view
                     List {
                         ForEach(favorites) { item in
                             NavigationLink(
                                 destination: FavoriteDetailView(item: item),
-                                
                                 label: {
-                                    VStack(alignment: .leading, spacing: 2) {
-                                        Text("#\(item.num): " + (item.title ?? ""))
-                                            .font(.headline)
-                                        
-                                        Text(item.alt ?? "")
-                                            .foregroundColor(.secondary)
-                                            .lineLimit(2)
-                                    }
-                                })
+                                    FavoriteComicCellView(item: item)
+                                }
+                            )
                         }
                         .onDelete(perform: deleteComic)
-                    }.listStyle(PlainListStyle())
+                    }
+                    .listStyle(PlainListStyle())
                     .padding(.top)
                 }
                 
                 if favorites.isEmpty {
-                    Text("You haven't added anything yet!")
-                        .fontWeight(.medium)
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
+                    EmptyMessage()
                 }
             }
             .navigationBarHidden(true)
         }
     }
     
-    
+    // Delete comics by swipe function
     func deleteComic(offsets: IndexSet) {
         withAnimation {
             for index in offsets {
@@ -76,13 +68,17 @@ struct FavoritesView: View {
 struct FavoritesView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
+            HeaderView()
+                .previewLayout(.sizeThatFits)
+            
+            EmptyMessage()
+                .padding()
+                .previewLayout(.sizeThatFits)
+            
             FavoritesView()
-            //FavoriteDetailView()
         }
     }
 }
-
-
 
 fileprivate struct HeaderView: View {
     var body: some View {
@@ -93,7 +89,17 @@ fileprivate struct HeaderView: View {
             Spacer()
             
             EditButton()
-        }.padding(.horizontal)
+        }
+        .padding(.horizontal)
         .padding(.vertical, 10)
+    }
+}
+
+struct EmptyMessage: View {
+    var body: some View {
+        Text("You haven't added anything yet!")
+            .fontWeight(.medium)
+            .font(.subheadline)
+            .foregroundColor(.secondary)
     }
 }

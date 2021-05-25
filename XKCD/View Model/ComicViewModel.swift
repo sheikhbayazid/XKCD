@@ -10,22 +10,19 @@ import SwiftUI
 
 class ComicViewModel: ObservableObject {
     @Published var comic = Comic.example
-    @AppStorage("totalComics") var totalComics = 2460 // Default Comic number before updating from the api
+    @Published var comicResponses = [ComicResponse]()
     
+    @AppStorage("totalComics") var totalComics = 2460 // Default Comic number before updating from the api
     @Published var searchText = ""
     @Published var sort: Int = 0
-    
-    @Published var comicResponses = [ComicResponse]()
     @Published var serverError = false
-    
     
     init() {
         self.comic = fetchComic(for: "") // Loading the latest comic number
         fetchAllComics()
-        //fetchAllSingleComics()
     }
     
-    // Fetch Comic by number
+    // Fetch Comic by Number
     func fetchComic(for number: String) -> Comic {
         guard let url = URL(string: "https://xkcd.com/\(number)/info.0.json") else {
             print("Invalid URL")
@@ -33,8 +30,7 @@ class ComicViewModel: ObservableObject {
         }
         
         let session = URLSession(configuration: .default)
-        
-        session.dataTask(with: url) { data, response, error in
+        session.dataTask(with: url) { data, _, error in
             if error == nil {
                 let decoder = JSONDecoder()
                 
@@ -46,9 +42,10 @@ class ComicViewModel: ObservableObject {
                             
                             if number.isEmpty {
                                 self.totalComics = decodedData.num
+                                print("------------------------")
+                                print("Latest Comic: \(decodedData.num)")
+                                print("------------------------")
                             }
-                            
-                            //print("--- Single Comic: \(decodedData)")
                         }
                     } catch {
                         print(error)
@@ -60,7 +57,7 @@ class ComicViewModel: ObservableObject {
         return comic
     }
     
-    // MARK: - Fetch all the comics for browse view
+    // Fetch all the comics for the Browse View
     func fetchAllComics() {
         guard let url = URL(string: "https://api.xkcdy.com/comics") else { // https://xkcd.com/info.0.json
             print("Invalid URL")
@@ -68,8 +65,7 @@ class ComicViewModel: ObservableObject {
         }
         
         let session = URLSession(configuration: .default)
-        
-        let task = session.dataTask(with: url) { data, response, error in
+        session.dataTask(with: url) { data, _, error in
             if error == nil {
                 let decoder = JSONDecoder()
                 
@@ -78,15 +74,6 @@ class ComicViewModel: ObservableObject {
                         let decodedData = try decoder.decode([ComicResponse].self, from: data)
                         DispatchQueue.main.async {
                             self.comicResponses = decodedData
-                            print("------------------------")
-                            print(decodedData.count + 4) // Count is 4 less than the total comics. So added 4 to get the exact number
-                            print("------------------------")
-                            
-                            //                            if self.totalComics < decodedData.count {
-                            //                                self.totalComics = decodedData.count
-                            //                                print("--- Total Comics: \(self.totalComics) ---")
-                            //                            }
-                            
                         }
                     } catch {
                         print(error)
@@ -94,9 +81,7 @@ class ComicViewModel: ObservableObject {
                     }
                 }
             }
-        }
-        task.resume()
+        }.resume()
     }
-    
     
 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NavBarButtonsView: View {
     @Environment(\.managedObjectContext) private var moc
-    @FetchRequest(entity: Favorite.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Favorite.title, ascending: true),]) var favorites: FetchedResults<Favorite>
+    @FetchRequest(entity: Favorite.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Favorite.title, ascending: true)]) var favorites: FetchedResults<Favorite>
     
     let comic: ComicResponse
     var imageURL: String
@@ -33,7 +33,6 @@ struct NavBarButtonsView: View {
                 
             }, label: {
                 Image(systemName: isFavorite ? "heart.fill" : "heart")
-                    .font(.title2)
             })
             
             // Share button
@@ -43,11 +42,10 @@ struct NavBarButtonsView: View {
                 
             }, label: {
                 Image(systemName: "square.and.arrow.up")
-                    .font(.title2)
             })
         }
+        .font(.title2)
     }
-    
     
     private func addFavorite() {
         let comic = Favorite(context: moc)
@@ -74,16 +72,17 @@ struct NavBarButtonsView: View {
                 do {
                     try moc.save()
                 } catch {
-                    print("Error saving book: \(error.localizedDescription)")
+                    print("Error deleting favorite: \(error.localizedDescription)")
                 }
             }
         }
     }
 }
 
-
 struct NavBarButtonsView_Previews: PreviewProvider {
     static var previews: some View {
         NavBarButtonsView(comic: ComicResponse.example, imageURL: "")
+            .padding()
+            .previewLayout(.sizeThatFits)
     }
 }

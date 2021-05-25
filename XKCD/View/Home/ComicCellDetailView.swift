@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ComicCellDetailView: View {
     @Environment(\.managedObjectContext) private var moc
-    @FetchRequest(entity: Favorite.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Favorite.title, ascending: true),]) var favorites: FetchedResults<Favorite>
+    @FetchRequest(entity: Favorite.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Favorite.title, ascending: true)]) var favorites: FetchedResults<Favorite>
     
     let comic: Comic
     
@@ -28,7 +28,6 @@ struct ComicCellDetailView: View {
                     
                 }, label: {
                     Image(systemName: "square.and.arrow.up")
-                        .font(.title2)
                 })
                 
                 Spacer()
@@ -39,29 +38,26 @@ struct ComicCellDetailView: View {
                         isFavorite.toggle()
                         
                         if isFavorite {
-                            addFavorite()
+                            addToFavorite()
                         } else {
-                            deleteComic()
+                            deleteFromFavorite()
                         }
                     }
                     
                 }, label: {
                     Image(systemName: isFavorite ? "heart.fill" : "heart")
-                        .font(.title2)
                 })
                 
             }
+            .font(.title2)
             
             // Comic Details
             HStack {
                 VStack(alignment: .leading, spacing: 5) {
-                    
                     Text("#\(comic.num): " + comic.title)
                         .fontWeight(.medium)
-                        .font(.subheadline)
                     
                     Text(comic.alt)
-                        .font(.subheadline)
                     
                     HStack(spacing: 0) {
                         Text("Go to comic")
@@ -71,8 +67,9 @@ struct ComicCellDetailView: View {
                             .onTapGesture {
                                 self.isSheetShowing = true
                             }
-                    }.padding(.top, 2)
+                    }
                     .font(.subheadline)
+                    .padding(.top, 2)
                     .fullScreenCover(isPresented: $isSheetShowing) {
                         SafariView(url: URL(string: "https://www.explainxkcd.com/wiki/index.php/\(comic.num)")!)
                             .ignoresSafeArea()
@@ -81,13 +78,12 @@ struct ComicCellDetailView: View {
                 }
                 
                 Spacer()
-                
             }
         }
         .padding(.horizontal, 10)
     }
     
-    private func addFavorite() {
+    private func addToFavorite() {
         let comic = Favorite(context: moc)
         comic.num = Int16(self.comic.num)
         comic.title = self.comic.title
@@ -102,10 +98,9 @@ struct ComicCellDetailView: View {
                 print("Error saving favorite: \(error.localizedDescription)")
             }
         }
-        
     }
     
-    private func deleteComic() {
+    private func deleteFromFavorite() {
         if let lastAddedItem = favorites.last {
             moc.delete(lastAddedItem)
             
@@ -113,17 +108,17 @@ struct ComicCellDetailView: View {
                 do {
                     try moc.save()
                 } catch {
-                    print("Error saving book: \(error.localizedDescription)")
+                    print("Error deleting favorite: \(error.localizedDescription)")
                 }
             }
         }
     }
-    
 }
-
 
 struct ComicCellDetailView_Previews: PreviewProvider {
     static var previews: some View {
         ComicCellDetailView(comic: Comic.example)
+            .padding()
+            .previewLayout(.sizeThatFits)
     }
 }
