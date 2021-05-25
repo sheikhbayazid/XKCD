@@ -1,5 +1,5 @@
 # XKCD
-XKCD Comic Viewer
+XKCD Comic Viewer SwiftUI
 
 ## App Breakdown
  * Architechture: MVVM
