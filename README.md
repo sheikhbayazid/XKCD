@@ -5,6 +5,7 @@ XKCD Comic Viewer
  * Architechture: MVVM
  * Persistance: CoreData
  * Coding style: SwiftLint
+ * Asynchronous image loading
 
 ## Views
 HomeView
@@ -23,7 +24,6 @@ FavoriteView
  * Swipe to delete with Edit button
 
 Others - UIKit
- * Asynchronous image loading
  * Share Sheet to share/save image
  * Safari View for comic explanation
  * Pinch to zoom
