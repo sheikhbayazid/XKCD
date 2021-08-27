@@ -1,0 +1,20 @@
+disabled_rules:
+ - identifier_name
+ - trailing_whitespace
+ - multiple_closures_with_trailing_closure
+ - syntactic_sugar
+ - force_cast
+ - cyclomatic_complexity
+ - redundant_optional_initialization
+
+opt_in_rules:
+ - empty_count
+ 
+excluded:
+ - Pods
+ 
+line_length:
+ warning: 2000
+ error: 2500
+ 
+

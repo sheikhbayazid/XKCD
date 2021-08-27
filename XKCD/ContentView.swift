@@ -7,15 +7,6 @@
 
 import SwiftUI
 
-// browse through the comics,
-// see the comic details, including its description,
-// search for comics by the comic number as well as text,
-// get the comic explanation
-// favorite the comics, which would be available offline too,
-// send comics to others,
-// get notifications when a new comic is published,
-// support multiple form factors.
-
 struct ContentView: View {
     @Environment(\.managedObjectContext) var moc
     @ObservedObject var viewModel = ComicViewModel()
@@ -23,28 +14,18 @@ struct ContentView: View {
     var body: some View {
         TabView {
             HomeView(viewModel: viewModel)
-                .tabItem {
-                    Image(systemName: "rectangle.3.offgrid.bubble.left")
-                    Text("Comics")
-                }
+                .tabItem(viewModel.home)
             
             BrowseView(viewModel: viewModel)
-                .tabItem {
-                    Image(systemName: "rectangle.and.text.magnifyingglass")
-                    Text("Browse")
-                }
+                .tabItem(viewModel.browse)
             
             FavoritesView()
-                .tabItem {
-                    Image(systemName: "heart.fill")
-                    Text("Favorites")
-                }
-            
-        }.accentColor(.primary)
+                .tabItem(viewModel.favourites)
+        }
+        .accentColor(.primary)
         .preferredColorScheme(.dark)
         .environment(\.managedObjectContext, self.moc)
     }
-    
 }
 
 struct ContentView_Previews: PreviewProvider {

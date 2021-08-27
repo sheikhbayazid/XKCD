@@ -12,7 +12,7 @@ struct ComicView: View {
     @State private var comic = Comic.example
     
     var body: some View {
-        ComicCellView(comic: fetchComicData(for: comicNumber))
+        ComicItemView(comic: fetchComicData(for: comicNumber))
     }
     
     // Fetching data from this view uses less memory than using fetching functions from view model
