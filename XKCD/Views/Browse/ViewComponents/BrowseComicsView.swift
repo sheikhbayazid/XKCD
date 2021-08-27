@@ -32,30 +32,20 @@ struct BrowseComicsView: View {
                 destination: BrowseComicDetailView(comic: comic) ,
                 
                 label: {
-                    ImageView(comic: comic)
+                    imageView(comic: comic)
                 }
             )
         }
     }
-}
-
-struct BrowseComicsView_Previews: PreviewProvider {
-    static var previews: some View {
-        BrowseComicsView(viewModel: ComicViewModel())
-    }
-}
-
-fileprivate struct ImageView: View {
-    let comic: ReversedCollection<[ComicResponse]>.Element
     
-    var body: some View {
-        AsyncImage(url: URL(string: getImageURL(imgs: comic.imgs))!, placeholder: { Color.gray.opacity(0.15)
-            
-        }) { image in
+    @ViewBuilder
+    private func imageView(comic: ReversedCollection<[ComicResponse]>.Element) -> some View {
+        AsyncImage(url: URL(string: getImageURL(imgs: comic.imgs))!,
+                   placeholder: { Color.gray.opacity(0.15) }) { image in
             Image(uiImage: image)
                 .resizable()
-        }.aspectRatio(contentMode: .fit)
-        // .frame(maxWidth: Screen.width / 3 - 10)
+        }
+        .aspectRatio(contentMode: .fit)
         .overlay(
             Text("\(comic.id)")
                 .font(.footnote)
@@ -69,12 +59,18 @@ fileprivate struct ImageView: View {
         )
     }
     
-    func getImageURL(imgs: [ImageDetails]) -> String {
+    private func getImageURL(imgs: [ImageDetails]) -> String {
         var imageURL = ""
         
         for image in imgs {
             imageURL = image.sourceUrl
         }
         return imageURL
+    }
+}
+
+struct BrowseComicsView_Previews: PreviewProvider {
+    static var previews: some View {
+        BrowseComicsView(viewModel: ComicViewModel())
     }
 }

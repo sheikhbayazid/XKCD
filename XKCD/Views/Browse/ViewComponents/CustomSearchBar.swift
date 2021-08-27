@@ -1,5 +1,5 @@
 //
-//  NavSearchBarView.swift
+//  CustomSearchBar.swift
 //  XKCD
 //
 //  Created by Sheikh Bayazid on 5/22/21.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NavSearchBarView: View {
+struct CustomSearchBar: View {
     @ObservedObject var viewModel: ComicViewModel
     
     var body: some View {
@@ -20,12 +20,10 @@ struct NavSearchBarView: View {
                     TextField("Title, Number, Transcript, Alt etc.", text: $viewModel.searchText)
                     
                     if !viewModel.searchText.isEmpty {
-                        Button(action: {
-                            viewModel.searchText = ""
-                        }, label: {
+                        Button(action: emptyTextField ) {
                             Image(systemName: "xmark.circle.fill")
                                 .foregroundColor(.secondary)
-                        })
+                        }
                     }
                 }
                 .padding(.horizontal, 15)
@@ -47,11 +45,15 @@ struct NavSearchBarView: View {
             }
         }
     }
+    
+    private func emptyTextField() {
+        viewModel.searchText = ""
+    }
 }
 
-struct NavSearchBarView_Previews: PreviewProvider {
+struct CustomSearchBar_Previews: PreviewProvider {
     static var previews: some View {
-        NavSearchBarView(viewModel: ComicViewModel())
+        CustomSearchBar(viewModel: ComicViewModel())
             .padding()
             .previewLayout(.sizeThatFits)
     }

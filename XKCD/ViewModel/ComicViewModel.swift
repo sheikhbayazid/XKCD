@@ -77,11 +77,37 @@ class ComicViewModel: ObservableObject {
                         }
                     } catch {
                         print(error)
-                        self.serverError = true
+                        DispatchQueue.main.async {
+                            self.serverError = true
+                        }
                     }
                 }
             }
         }.resume()
     }
     
+    // MARK: - TabBar Items
+    @ViewBuilder
+    func home() -> some View {
+        Group {
+            Image(systemName: "rectangle.3.offgrid.bubble.left")
+            Text("Comics")
+        }
+    }
+    
+    @ViewBuilder
+    func browse() -> some View {
+        Group {
+            Image(systemName: "rectangle.and.text.magnifyingglass")
+            Text("Browse")
+        }
+    }
+    
+    @ViewBuilder
+    func favourites() -> some View {
+        Group {
+            Image(systemName: "heart.fill")
+            Text("Favorites")
+        }
+    }
 }

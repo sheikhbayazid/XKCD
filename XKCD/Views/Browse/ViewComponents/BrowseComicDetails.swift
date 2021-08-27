@@ -8,26 +8,24 @@
 import SwiftUI
 
 struct BrowseComicDetails: View {
-    let comic: ComicResponse
     @State private var isSafariShowing = false
+    
+    let comic: ComicResponse
     
     var body: some View {
         VStack {
-            HStack(spacing: 0) {
+            HStack(spacing: 5) {
                 Text("Go to comic")
                 
-                Text(" explanation")
+                Text("explanation")
+                    .underline(true, color: .yellow)
                     .fontWeight(.medium)
-                    .underline()
-                    .onTapGesture {
-                        self.isSafariShowing = true
-                    }
-                
+                    .onTapGesture(perform: showSafari)
             }
             .font(.subheadline)
             .padding(.top, 2)
             .fullScreenCover(isPresented: $isSafariShowing) {
-                SafariView(url: URL(string: "https://www.explainxkcd.com/wiki/index.php/\(comic.id)")!)
+                SafariView(url: comicURL)
                     .ignoresSafeArea()
                     .preferredColorScheme(.dark)
             }
@@ -58,6 +56,14 @@ struct BrowseComicDetails: View {
             .padding(.top)
             .padding(.horizontal)
         }
+    }
+    
+    private var comicURL: URL {
+        URL(string: "https://www.explainxkcd.com/wiki/index.php/\(comic.id)")!
+    }
+    
+    private func showSafari() {
+        self.isSafariShowing = true
     }
 }
 
