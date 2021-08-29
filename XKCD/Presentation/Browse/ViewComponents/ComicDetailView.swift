@@ -1,5 +1,5 @@
 //
-//  ComicDetailsView.swift
+//  ComicDetailView.swift
 //  XKCD
 //
 //  Created by Sheikh Bayazid on 5/20/21.
@@ -7,11 +7,11 @@
 
 import SwiftUI
 
-struct BrowseComicDetailView: View {
+struct ComicDetailView: View {
     let comic: ComicResponse
     var imageURL = ""
     
-    init(comic: ComicResponse) {
+    init(_ comic: ComicResponse) {
         self.comic = comic
         
         for image in comic.imgs {
@@ -21,15 +21,17 @@ struct BrowseComicDetailView: View {
     
     var body: some View {
         ScrollView {
-            imageView(url: imageURL)
-            BrowseComicDetails(comic: comic)
-            
+            VStack(spacing: 20) {
+                imageView(url: imageURL)
+                ComicDescription(comic: comic)
+            }
         }
         .padding(.vertical)
-        .navigationBarTitle(Text("\(comic.id): " + comic.title), displayMode: .inline)
-        .navigationBarItems(trailing: CustomButtons(comic: comic, imageURL: imageURL) )
+        .navigationBarTitle(Text(title), displayMode: .inline)
+        .navigationBarItems(trailing: CustomButtons(comic: comic, imageURL: imageURL))
     }
     
+    @ViewBuilder
     private func imageView(url: String) -> some View {
         AsyncImage(url: URL(string: url)!, placeholder: loadingView) { image in
             Image(uiImage: image)
@@ -37,10 +39,11 @@ struct BrowseComicDetailView: View {
         }
         .aspectRatio(contentMode: .fit)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .pinchToZoom()
         .padding(.top, 15)
+        .pinchToZoom()
     }
     
+    @ViewBuilder
     private func loadingView() -> some View {
         ZStack {
             Color.gray.opacity(0.15)
@@ -48,12 +51,15 @@ struct BrowseComicDetailView: View {
         }
     }
     
+    private var title: String {
+        "\(comic.id): " + comic.title
+    }
 }
 
-struct BrowseComicDetailView_Previews: PreviewProvider {
+struct ComicDetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            BrowseComicDetailView(comic: ComicResponse.example)
+            ComicDetailView(ComicResponse.example)
         }
     }
 }

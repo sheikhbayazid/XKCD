@@ -15,31 +15,29 @@ struct FavoritesView: View {
     
     var body: some View {
         NavigationView {
-            ZStack {
-                VStack {
-                    navigationView()
+            VStack {
+                navigationView()
+                
+                // Issue: List + navigationView in VStack:- Auto select issue when back from navigation link destination.
+                // Fix: - Using only list in the navigation view solves the problem but limits custom navigation view
+                
+                if favorites.isEmpty {
+                    emptyMessage()
+                } else {
                     
-                    // Issue: List + HeaderView in VStack:- Auto select issue when back from navigation link destination.
-                    // Fix: - Using only list in the navigation view solves the problem but limits custom header view
-                    
-                    if favorites.isEmpty {
-                        emptyMessage()
-                    } else {
-                        
-                        List {
-                            ForEach(favorites) { item in
-                                NavigationLink(
-                                    destination: FavoriteDetailView(item: item),
-                                    label: {
-                                        comicLabel(item: item)
-                                    }
-                                )
-                            }
-                            .onDelete(perform: deleteComic)
+                    List {
+                        ForEach(favorites) { item in
+                            NavigationLink(
+                                destination: FavoriteDetailView(item: item),
+                                label: {
+                                    comicLabel(item: item)
+                                }
+                            )
                         }
-                        .listStyle(PlainListStyle())
-                        .padding(.top)
+                        .onDelete(perform: deleteComic)
                     }
+                    .listStyle(PlainListStyle())
+                    .padding(.top)
                 }
             }
             .navigationBarHidden(true)
@@ -106,7 +104,6 @@ struct FavoritesView: View {
             }
         }
     }
-    
 }
 
 struct FavoritesView_Previews: PreviewProvider {

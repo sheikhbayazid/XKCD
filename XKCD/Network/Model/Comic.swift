@@ -8,6 +8,7 @@
 import Foundation
 
 // MARK: - All Comics - https://api.xkcdy.com/comics - This API returns a all the comics available in xkcd
+// MARK: - NOTE: This server fails often, if there's any decoding error then this server failed
 struct ComicResponse: Identifiable, Decodable, Comparable {
     let id: Int
     let safeTitle: String

@@ -1,5 +1,5 @@
 //
-//  BrowseComicDetails.swift
+//  ComicDescription.swift
 //  XKCD
 //
 //  Created by Sheikh Bayazid on 5/23/21.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct BrowseComicDetails: View {
+struct ComicDescription: View {
     @State private var isSafariShowing = false
     
     let comic: ComicResponse
@@ -67,9 +67,9 @@ struct BrowseComicDetails: View {
     }
 }
 
-struct BrowseComicDetails_Previews: PreviewProvider {
+struct ComicDescription_Previews: PreviewProvider {
     static var previews: some View {
-        BrowseComicDetails(comic: ComicResponse.example)
+        ComicDescription(comic: ComicResponse.example)
             .padding()
             .previewLayout(.sizeThatFits)
     }

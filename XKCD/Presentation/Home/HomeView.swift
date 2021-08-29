@@ -8,15 +8,15 @@
 import SwiftUI
 
 struct HomeView: View {
-    @ObservedObject var viewModel: ComicViewModel
+    @EnvironmentObject var viewModel: ComicViewModel
     
     var comics: [Int] {
-        if viewModel.sort == 0 {
-            return Array(stride(from: viewModel.totalComics, to: 1, by: -1)) // Latest comics
-        } else if viewModel.sort == 1 {
-            return Array(1...viewModel.totalComics) // Earliest comics
+        if viewModel.sort == .latest {
+            return Array(stride(from: viewModel.totalComics, to: 1, by: -1))
+        } else if viewModel.sort == .earliest {
+            return Array(1...viewModel.totalComics)
         }
-        return Array(stride(from: viewModel.totalComics, to: 1, by: -1)) // Default latest comics
+        return Array(stride(from: viewModel.totalComics, to: 1, by: -1))
     }
     
     var body: some View {
@@ -36,7 +36,8 @@ struct HomeView: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(viewModel: ComicViewModel())
+        HomeView()
+            .environmentObject(ComicViewModel())
             .preferredColorScheme(.dark)
     }
 }

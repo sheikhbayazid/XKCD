@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CustomNavigationBar: View {
-    @Binding var sort: Int
+    @Binding var sort: Sort
     
     var body: some View {
         VStack {
@@ -20,12 +20,10 @@ struct CustomNavigationBar: View {
                 
                 Menu {
                     Picker(selection: $sort, label: Text("Filter options")) {
-                        Text("Latest").tag(0)
-                        Text("Earliest").tag(1)
+                        Text("Latest").tag(Sort.latest)
+                        Text("Earliest").tag(Sort.earliest)
                     }
-                }
-                
-                label: {
+                } label: {
                     Image(systemName: "line.horizontal.3.decrease.circle")
                         .font(.title)
                 }
@@ -40,6 +38,9 @@ struct CustomNavigationBar: View {
 
 struct CustomNavigationBar_Previews: PreviewProvider {
     static var previews: some View {
-        CustomNavigationBar(sort: .constant(1))
+        CustomNavigationBar(sort: .constant(.latest))
+            .padding()
+            .previewLayout(.sizeThatFits)
+            .preferredColorScheme(.dark)
     }
 }

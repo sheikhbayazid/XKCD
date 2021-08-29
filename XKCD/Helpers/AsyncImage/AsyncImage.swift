@@ -1,9 +1,12 @@
 //
 //  AsyncImage.swift
-//  XKCD
+//  AsyncImage
 //
-//  Created by Sheikh Bayazid on 5/19/21.
+//  Created by Vadym Bulavin on 2/13/20.
+//  Copyright © 2020 Vadym Bulavin. All rights reserved.
 //
+
+// MARK: - AsyncImage Repo: https://github.com/V8tr/AsyncImage
 
 import SwiftUI
 

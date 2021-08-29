@@ -20,18 +20,7 @@ struct ComicLabelView: View {
     var body: some View {
         
         VStack(spacing: 10) {
-            HStack {
-                Button(action: openShareSheet) {
-                    Image(systemName: "square.and.arrow.up")
-                }
-                
-                Spacer()
-                
-                Button(action: action) {
-                    Image(systemName: isFavorite ? "heart.fill" : "heart")
-                }
-            }
-            .font(.title2)
+            horizontalButtons()
             
             HStack {
                 VStack(alignment: .leading, spacing: 5) {
@@ -43,6 +32,22 @@ struct ComicLabelView: View {
             }
         }
         .padding(.horizontal, 10)
+    }
+    
+    @ViewBuilder
+    private func horizontalButtons() -> some View {
+        HStack {
+            Button(action: openShareSheet) {
+                Image(systemName: "square.and.arrow.up")
+            }
+            
+            Spacer()
+            
+            Button(action: favouriteAction) {
+                Image(systemName: isFavorite ? "heart.fill" : "heart")
+            }
+        }
+        .font(.title2)
     }
     
     @ViewBuilder
@@ -81,7 +86,7 @@ struct ComicLabelView: View {
         URL(string: "https://www.explainxkcd.com/wiki/index.php/\(comic.num)")!
     }
     
-    private func action() {
+    private func favouriteAction() {
         withAnimation(.spring()) {
             isFavorite.toggle()
             

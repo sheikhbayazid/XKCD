@@ -1,8 +1,9 @@
 //
 //  ImageCache.swift
-//  XKCD
+//  AsyncImage
 //
-//  Created by Sheikh Bayazid on 5/19/21.
+//  Created by Vadym Bulavin on 2/19/20.
+//  Copyright © 2020 Vadym Bulavin. All rights reserved.
 //
 
 import UIKit

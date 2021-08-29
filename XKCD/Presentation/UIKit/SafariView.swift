@@ -15,13 +15,11 @@ struct SafariView: UIViewControllerRepresentable {
         return SFSafariViewController(url: url)
     }
     
-    func updateUIViewController(_ uiViewController: SFSafariViewController, context: Context) {
-        
-    }
+    func updateUIViewController(_ uiViewController: SFSafariViewController, context: Context) { }
 }
 
 struct SafariView_Previews: PreviewProvider {
     static var previews: some View {
-        SafariView(url: URL(string: "www.apple.com")!)
+        SafariView(url: URL(string: "https://www.apple.com")!)
     }
 }

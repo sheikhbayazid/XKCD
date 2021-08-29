@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct FavoriteDetailView: View {
-    let item: FetchedResults<Favorite>.Element
+    let item: Favorite
     
     @State var image: Data = .init(count: 0)
     @State private var isSafariShowing = false
@@ -42,12 +43,12 @@ struct FavoriteDetailView: View {
     
     @ViewBuilder
     private func comicExplanationView() -> some View {
-        HStack(spacing: 0) {
+        HStack(spacing: 5) {
             Text("Go to comic")
             
-            Text(" explanation")
+            Text("explanation")
+                .underline(true, color: .yellow)
                 .fontWeight(.medium)
-                .underline()
                 .onTapGesture(perform: showSafari)
         }
         .font(.subheadline)
@@ -66,7 +67,7 @@ struct FavoriteDetailView: View {
                 Text(item.alt ?? "")
                     .font(.headline)
                 
-                if item.transcript != nil {
+                if item.transcript != nil && item.transcript!.count > 10 {
                     VStack(alignment: .leading, spacing: 2) {
                         Text("Transcript:")
                             .fontWeight(.medium)
@@ -96,5 +97,13 @@ struct FavoriteDetailView: View {
     
     private func showSafari() {
         self.isSafariShowing = true
+    }
+}
+
+struct FavoriteDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        let context = PersistenceController.preview.container.viewContext
+        
+        return FavoriteDetailView(item: Favorite(context: context))
     }
 }

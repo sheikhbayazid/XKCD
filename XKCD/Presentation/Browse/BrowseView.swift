@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct BrowseView: View {
-    @ObservedObject var viewModel: ComicViewModel
-    let columns = Array(repeating: GridItem(.flexible()), count: 3)
+    @EnvironmentObject var viewModel: ComicViewModel
     
     var body: some View {
         NavigationView {
@@ -20,14 +19,10 @@ struct BrowseView: View {
                     if viewModel.serverError {
                         errorMessage()
                     } else {
-                        ScrollView {
-                            LazyVGrid(columns: columns) {
-                                BrowseComicsView(viewModel: viewModel)
-                            }
-                        }
+                        ComicsGridView(viewModel: viewModel)
+                            .padding(.top, 10)
                     }
                 }
-                
             }
             .navigationBarHidden(true)
             .padding(.horizontal)
@@ -49,11 +44,12 @@ struct BrowseView: View {
             Spacer()
         }
     }
-    
 }
 
 struct BrowseView_Previews: PreviewProvider {
     static var previews: some View {
-        BrowseView(viewModel: ComicViewModel())
+        BrowseView()
+            .environmentObject(ComicViewModel())
+            .preferredColorScheme(.dark)
     }
 }
