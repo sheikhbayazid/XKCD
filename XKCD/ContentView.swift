@@ -8,15 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Environment(\.managedObjectContext) var moc
-    @ObservedObject var viewModel = ComicViewModel()
+    @StateObject private var viewModel = ComicViewModel()
     
     var body: some View {
         TabView {
-            HomeView(viewModel: viewModel)
+            HomeView()
                 .tabItem(viewModel.home)
             
-            BrowseView(viewModel: viewModel)
+            BrowseView()
                 .tabItem(viewModel.browse)
             
             FavoritesView()
@@ -24,7 +23,7 @@ struct ContentView: View {
         }
         .accentColor(.primary)
         .preferredColorScheme(.dark)
-        .environment(\.managedObjectContext, self.moc)
+        .environmentObject(viewModel)
     }
 }
 

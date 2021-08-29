@@ -17,10 +17,10 @@ struct CustomSearchBar: View {
                     Image(systemName: "magnifyingglass")
                         .foregroundColor(.secondary)
                     
-                    TextField("Title, Number, Transcript, Alt etc.", text: $viewModel.searchText)
+                    TextField("Title, number, transcript, alt etc.", text: $viewModel.searchText)
                     
                     if !viewModel.searchText.isEmpty {
-                        Button(action: emptyTextField ) {
+                        Button(action: clearTextField ) {
                             Image(systemName: "xmark.circle.fill")
                                 .foregroundColor(.secondary)
                         }
@@ -34,19 +34,17 @@ struct CustomSearchBar: View {
             
             Menu {
                 Picker(selection: $viewModel.sort, label: Text("Sort by")) {
-                    Text("Latest").tag(0)
-                    Text("Earliest").tag(1)
+                    Text("Latest").tag(Sort.latest)
+                    Text("Earliest").tag(Sort.earliest)
                 }
-            }
-            
-            label: {
+            } label: {
                 Image(systemName: "line.horizontal.3.decrease.circle")
                     .font(.title)
             }
         }
     }
     
-    private func emptyTextField() {
+    private func clearTextField() {
         viewModel.searchText = ""
     }
 }

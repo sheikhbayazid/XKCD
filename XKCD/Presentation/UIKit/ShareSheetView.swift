@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// MARK: - Full-Screen Share Sheet
 struct ShareSheetView: UIViewControllerRepresentable {
     var items: [Any]
     
@@ -15,9 +16,7 @@ struct ShareSheetView: UIViewControllerRepresentable {
         return controller
     }
     
-    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {
-        
-    }
+    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) { }
 }
 
 struct ShareSheetView_Previews: PreviewProvider {
@@ -28,6 +27,7 @@ struct ShareSheetView_Previews: PreviewProvider {
     }
 }
 
+// MARK: - Half-Screen Share Sheet
 func shareSheet(for items: [Any]) {
     let activityController = UIActivityViewController(activityItems: items, applicationActivities: nil)
     

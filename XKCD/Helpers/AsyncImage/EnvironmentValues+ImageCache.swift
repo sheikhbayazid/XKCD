@@ -1,8 +1,9 @@
 //
 //  EnvironmentValues+ImageCache.swift
-//  XKCD
+//  AsyncImage
 //
-//  Created by Sheikh Bayazid on 5/19/21.
+//  Created by Vadim Bulavin on 3/24/20.
+//  Copyright © 2020 Vadym Bulavin. All rights reserved.
 //
 
 import SwiftUI

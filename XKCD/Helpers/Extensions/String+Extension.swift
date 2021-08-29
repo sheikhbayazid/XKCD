@@ -14,10 +14,10 @@ extension String {
             guard let url = URL(string: self) else { return UIImage()}
             
             let data = try Data(contentsOf: url)
-            
             return UIImage(data: data) ?? UIImage()
-        } catch {
             
+        } catch {
+            print(error)
         }
         
         return UIImage()
@@ -29,10 +29,10 @@ extension String {
             guard let url = URL(string: self) else { return Data()}
             
             let data = try Data(contentsOf: url)
-            
             return data
-        } catch {
             
+        } catch {
+            print(error)
         }
         
         return Data()

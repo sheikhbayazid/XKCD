@@ -8,82 +8,40 @@
 import Foundation
 import SwiftUI
 
-class ComicViewModel: ObservableObject {
-    @Published var comic = Comic.example
-    @Published var comicResponses = [ComicResponse]()
+enum Sort: Int, Identifiable, CaseIterable {
+    case latest
+    case earliest
     
-    @AppStorage("totalComics") var totalComics = 2460 // Default Comic number before updating from the api
+    var id: Int { rawValue }
+}
+
+final class ComicViewModel: ObservableObject {
+    @Published private(set) var comics = [ComicResponse]()
+    @AppStorage("totalComics") private(set) var totalComics = 2508
+    
     @Published var searchText = ""
-    @Published var sort: Int = 0
-    @Published var serverError = false
+    @Published var sort: Sort = .latest
     
-    init() {
-        self.comic = fetchComic(for: "") // Loading the latest comic number
-        fetchAllComics()
-    }
+    @Published private(set) var serverError = false
     
-    // Fetch Comic by Number
-    func fetchComic(for number: String) -> Comic {
-        guard let url = URL(string: "https://xkcd.com/\(number)/info.0.json") else {
-            print("Invalid URL")
-            return comic
-        }
-        
-        let session = URLSession(configuration: .default)
-        session.dataTask(with: url) { data, _, error in
-            if error == nil {
-                let decoder = JSONDecoder()
-                
-                if let data = data {
-                    do {
-                        let decodedData = try decoder.decode(Comic.self, from: data)
-                        DispatchQueue.main.async {
-                            self.comic = decodedData
-                            
-                            if number.isEmpty {
-                                self.totalComics = decodedData.num
-                                print("------------------------")
-                                print("Latest Comic: \(decodedData.num)")
-                                print("------------------------")
-                            }
-                        }
-                    } catch {
-                        print(error)
-                    }
-                }
-            }
-        }.resume()
-        
-        return comic
-    }
+    init() { fetchAllComics() }
     
-    // Fetch all the comics for the Browse View
     func fetchAllComics() {
-        guard let url = URL(string: "https://api.xkcdy.com/comics") else { // https://xkcd.com/info.0.json
-            print("Invalid URL")
-            return
-        }
-        
-        let session = URLSession(configuration: .default)
-        session.dataTask(with: url) { data, _, error in
-            if error == nil {
-                let decoder = JSONDecoder()
-                
-                if let data = data {
-                    do {
-                        let decodedData = try decoder.decode([ComicResponse].self, from: data)
-                        DispatchQueue.main.async {
-                            self.comicResponses = decodedData
-                        }
-                    } catch {
-                        print(error)
-                        DispatchQueue.main.async {
-                            self.serverError = true
-                        }
-                    }
+        NetworkManager.shared.fetchData(endpoint: .allComics, type: [ComicResponse].self) { result in
+            switch result {
+            case .success(let comics):
+                DispatchQueue.main.async {
+                    self.comics = comics
+                    self.totalComics = comics.count + 4
+                    // We get -4 items from this endpoint compared to actual total items. So adding 4
+                }
+            case .failure(let error):
+                print(error)
+                DispatchQueue.main.async {
+                    self.serverError = true
                 }
             }
-        }.resume()
+        }
     }
     
     // MARK: - TabBar Items

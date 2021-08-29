@@ -1,8 +1,9 @@
 //
 //  ImageLoader.swift
-//  XKCD
+//  AsyncImage
 //
-//  Created by Sheikh Bayazid on 5/19/21.
+//  Created by Vadym Bulavin on 2/13/20.
+//  Copyright © 2020 Vadym Bulavin. All rights reserved.
 //
 
 import Combine
