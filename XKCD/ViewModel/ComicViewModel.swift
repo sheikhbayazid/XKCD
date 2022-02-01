@@ -27,16 +27,15 @@ final class ComicViewModel: ObservableObject {
     
     func fetchAllComics() {
         NetworkManager.shared.fetchData(endpoint: .allComics, type: [ComicResponse].self) { result in
-            switch result {
-            case .success(let comics):
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let comics):
                     self.comics = comics
                     self.comicCount = comics.count + 4
                     // We get -4 items from this endpoint compared to actual total items. So adding 4
-                }
-            case .failure(let error):
-                print(error)
-                DispatchQueue.main.async {
+                    
+                case .failure(let error):
+                    print(error)
                     self.serverError = true
                 }
             }
@@ -52,7 +51,7 @@ final class ComicViewModel: ObservableObject {
         return Array(stride(from: comicCount, to: 1, by: -1))
     }()
     
-    // MARK: - TabBar Items
+    // TabBar Items
     @ViewBuilder
     func home() -> some View {
         Group {
