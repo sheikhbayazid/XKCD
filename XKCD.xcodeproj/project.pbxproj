@@ -11,7 +11,7 @@
 		400A71ED2652C877009FE0E8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400A71EC2652C877009FE0E8 /* ContentView.swift */; };
 		400A71EF2652C87C009FE0E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 400A71EE2652C87C009FE0E8 /* Assets.xcassets */; };
 		400A71F22652C87C009FE0E8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 400A71F12652C87C009FE0E8 /* Preview Assets.xcassets */; };
-		400A71FA2652C891009FE0E8 /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400A71F92652C891009FE0E8 /* Comic.swift */; };
+		400A71FA2652C891009FE0E8 /* ComicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400A71F92652C891009FE0E8 /* ComicModel.swift */; };
 		400A71FC2652CA02009FE0E8 /* ComicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400A71FB2652CA02009FE0E8 /* ComicViewModel.swift */; };
 		40150FEE26592FF300F27B1F /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40150FED26592FF300F27B1F /* CustomSearchBar.swift */; };
 		40150FF02659304C00F27B1F /* ComicsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40150FEF2659304C00F27B1F /* ComicsGridView.swift */; };
@@ -46,7 +46,7 @@
 		400A71EE2652C87C009FE0E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		400A71F12652C87C009FE0E8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		400A71F32652C87C009FE0E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		400A71F92652C891009FE0E8 /* Comic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
+		400A71F92652C891009FE0E8 /* ComicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicModel.swift; sourceTree = "<group>"; };
 		400A71FB2652CA02009FE0E8 /* ComicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicViewModel.swift; sourceTree = "<group>"; };
 		40150FED26592FF300F27B1F /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
 		40150FEF2659304C00F27B1F /* ComicsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsGridView.swift; sourceTree = "<group>"; };
@@ -140,7 +140,7 @@
 		402690762654C836004F2AD1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				400A71F92652C891009FE0E8 /* Comic.swift */,
+				400A71F92652C891009FE0E8 /* ComicModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -384,7 +384,7 @@
 				4055A7E82659A11500EC55ED /* XKCD.xcdatamodeld in Sources */,
 				4026909626559F50004F2AD1 /* FavoritesView.swift in Sources */,
 				402690862655102B004F2AD1 /* EnvironmentValues+ImageCache.swift in Sources */,
-				400A71FA2652C891009FE0E8 /* Comic.swift in Sources */,
+				400A71FA2652C891009FE0E8 /* ComicModel.swift in Sources */,
 				40A3844F26D96D9400AAA4AB /* CustomNavigationBar.swift in Sources */,
 				400A71FC2652CA02009FE0E8 /* ComicViewModel.swift in Sources */,
 				4026907426545942004F2AD1 /* String+Extension.swift in Sources */,

@@ -21,5 +21,6 @@ struct SafariView: UIViewControllerRepresentable {
 struct SafariView_Previews: PreviewProvider {
     static var previews: some View {
         SafariView(url: URL(string: "https://www.apple.com")!)
+            .ignoresSafeArea()
     }
 }

@@ -17,12 +17,11 @@ enum Sort: Int, Identifiable, CaseIterable {
 
 final class ComicViewModel: ObservableObject {
     @Published private(set) var comics = [ComicResponse]()
-    @AppStorage("totalComics") private(set) var totalComics = 2508
+    @AppStorage("totalComics") private(set) var comicCount = 2508
+    @Published private(set) var serverError = false
     
     @Published var searchText = ""
     @Published var sort: Sort = .latest
-    
-    @Published private(set) var serverError = false
     
     init() { fetchAllComics() }
     
@@ -32,7 +31,7 @@ final class ComicViewModel: ObservableObject {
             case .success(let comics):
                 DispatchQueue.main.async {
                     self.comics = comics
-                    self.totalComics = comics.count + 4
+                    self.comicCount = comics.count + 4
                     // We get -4 items from this endpoint compared to actual total items. So adding 4
                 }
             case .failure(let error):
@@ -43,6 +42,15 @@ final class ComicViewModel: ObservableObject {
             }
         }
     }
+    
+    lazy var totalComics: [Int] = {
+        if sort == .latest {
+            return Array(stride(from: comicCount, to: 1, by: -1))
+        } else if sort == .earliest {
+            return Array(1...comicCount)
+        }
+        return Array(stride(from: comicCount, to: 1, by: -1))
+    }()
     
     // MARK: - TabBar Items
     @ViewBuilder
