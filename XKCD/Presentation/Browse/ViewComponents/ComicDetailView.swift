@@ -30,6 +30,21 @@ struct ComicDetailView: View {
         .navigationBarTitle(Text(title), displayMode: .inline)
         .navigationBarItems(trailing: CustomButtons(comic: comic, imageURL: imageURL))
     }
+}
+
+struct ComicDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            ComicDetailView(ComicResponse.example)
+        }
+    }
+}
+
+extension ComicDetailView {
+    
+    private var title: String {
+        "\(comic.id): " + comic.title
+    }
     
     @ViewBuilder
     private func imageView(url: String) -> some View {
@@ -41,25 +56,5 @@ struct ComicDetailView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(.top, 15)
         .pinchToZoom()
-    }
-    
-    @ViewBuilder
-    private func loadingView() -> some View {
-        ZStack {
-            Color.gray.opacity(0.15)
-            ProgressView()
-        }
-    }
-    
-    private var title: String {
-        "\(comic.id): " + comic.title
-    }
-}
-
-struct ComicDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            ComicDetailView(ComicResponse.example)
-        }
     }
 }

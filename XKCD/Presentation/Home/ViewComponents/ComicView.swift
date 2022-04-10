@@ -40,16 +40,9 @@ struct ComicView: View {
         .pinchToZoom()
     }
     
-    @ViewBuilder
-    private func loadingView() -> some View {
-        ZStack {
-            Color.gray.opacity(0.15)
-            ProgressView()
-        }
-    }
-    
     private func loadComic() {
-        NetworkManager.shared.fetchData(endpoint: .singleComic(comicNumber), type: Comic.self) { result in
+        NetworkManager.shared.fetchData(endpoint: .singleComic(comicNumber),
+                                        type: Comic.self) { result in
             
             switch result {
             case .success(let comic):

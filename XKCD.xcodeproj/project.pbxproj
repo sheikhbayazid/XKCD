@@ -35,6 +35,7 @@
 		4055A7EA265A344100EC55ED /* FavoriteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4055A7E9265A344100EC55ED /* FavoriteDetailView.swift */; };
 		4077BB6226DB586B00CEFA84 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4077BB6126DB586B00CEFA84 /* NetworkManager.swift */; };
 		40A3844F26D96D9400AAA4AB /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A3844E26D96D9400AAA4AB /* CustomNavigationBar.swift */; };
+		40AB42BD2803020B00EEFDA0 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AB42BC2803020B00EEFDA0 /* View+Extension.swift */; };
 		40CC0E4E265AC36300F4980F /* ComicDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CC0E4D265AC36300F4980F /* ComicDescription.swift */; };
 		40CC0E50265AC65000F4980F /* CustomButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CC0E4F265AC65000F4980F /* CustomButtons.swift */; };
 /* End PBXBuildFile section */
@@ -70,6 +71,7 @@
 		4055A7E9265A344100EC55ED /* FavoriteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDetailView.swift; sourceTree = "<group>"; };
 		4077BB6126DB586B00CEFA84 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		40A3844E26D96D9400AAA4AB /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
+		40AB42BC2803020B00EEFDA0 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		40CC0E4D265AC36300F4980F /* ComicDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDescription.swift; sourceTree = "<group>"; };
 		40CC0E4F265AC65000F4980F /* CustomButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -149,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				4026907326545942004F2AD1 /* String+Extension.swift */,
+				40AB42BC2803020B00EEFDA0 /* View+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				4077BB6226DB586B00CEFA84 /* NetworkManager.swift in Sources */,
 				4026907A2654CB36004F2AD1 /* SafariView.swift in Sources */,
 				400A71EB2652C877009FE0E8 /* XKCDApp.swift in Sources */,
+				40AB42BD2803020B00EEFDA0 /* View+Extension.swift in Sources */,
 				4026907C2654CBAA004F2AD1 /* ShareSheetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
