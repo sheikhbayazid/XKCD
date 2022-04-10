@@ -35,7 +35,7 @@ final class NetworkManager {
         let session = URLSession(configuration: .default)
         session.dataTask(with: url) { data, _, error in
             
-            if error != nil {
+            if let error = error {
                 print("Error loading data from \(url): \(String(describing: error))")
                 return
             }

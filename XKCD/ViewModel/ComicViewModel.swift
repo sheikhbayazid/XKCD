@@ -5,8 +5,9 @@
 //  Created by Sheikh Bayazid on 5/17/21.
 //
 
-import Foundation
+import Combine
 import SwiftUI
+import Foundation
 
 enum Sort: Int, Identifiable, CaseIterable {
     case latest
@@ -16,14 +17,32 @@ enum Sort: Int, Identifiable, CaseIterable {
 }
 
 final class ComicViewModel: ObservableObject {
+    private var cancellables = Set<AnyCancellable>()
+    
     @Published private(set) var comics = [ComicResponse]()
     @AppStorage("totalComics") private(set) var comicCount = 2508
+    
     @Published private(set) var serverError = false
+    lazy var totalComics = Array(stride(from: comicCount, to: 1, by: -1))
     
     @Published var searchText = ""
     @Published var sort: Sort = .latest
     
-    init() { fetchAllComics() }
+    init() {
+        fetchAllComics()
+        
+        $sort
+            .receive(on: RunLoop.main)
+            .sink { sort in
+                switch sort {
+                case .latest:
+                    self.totalComics = Array(stride(from: self.comicCount, to: 1, by: -1))
+                case .earliest:
+                    self.totalComics = Array(1...self.comicCount)
+                }
+            }
+            .store(in: &cancellables)
+    }
     
     func fetchAllComics() {
         NetworkManager.shared.fetchData(endpoint: .allComics, type: [ComicResponse].self) { result in
@@ -41,15 +60,6 @@ final class ComicViewModel: ObservableObject {
             }
         }
     }
-    
-    lazy var totalComics: [Int] = {
-        if sort == .latest {
-            return Array(stride(from: comicCount, to: 1, by: -1))
-        } else if sort == .earliest {
-            return Array(1...comicCount)
-        }
-        return Array(stride(from: comicCount, to: 1, by: -1))
-    }()
     
     // TabBar Items
     @ViewBuilder
