@@ -16,4 +16,12 @@ extension View {
             ProgressView()
         }
     }
+    
+    @ViewBuilder
+    func grayBackgrund() -> some View {
+        self
+        .padding(16)
+        .background(Color.secondary.opacity(0.1))
+        .cornerRadius(10)
+    }
 }

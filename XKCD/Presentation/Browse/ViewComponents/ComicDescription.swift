@@ -34,6 +34,7 @@ struct ComicDescription: View {
                 VStack(alignment: .leading, spacing: 10) {
                     Text(comic.alt)
                         .font(.headline)
+                        .fixedSize(horizontal: false, vertical: true)
                     
                     if !comic.transcript.isEmpty {
                         VStack(alignment: .leading, spacing: 2) {
@@ -49,12 +50,8 @@ struct ComicDescription: View {
                 
                 Spacer()
             }
-            .padding(.horizontal, 15)
-            .padding(.vertical, 10)
-            .background(Color.secondary.opacity(0.1))
-            .cornerRadius(10)
-            .padding(.top)
-            .padding(.horizontal)
+            .grayBackgrund()
+            .padding([.top, .horizontal])
         }
     }
     
