@@ -13,7 +13,7 @@ struct BrowseView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 5) {
-                CustomSearchBar(viewModel: viewModel)
+                SearchBar(viewModel: viewModel)
                 
                 Group {
                     if viewModel.serverError {

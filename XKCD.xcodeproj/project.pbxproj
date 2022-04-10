@@ -13,7 +13,7 @@
 		400A71F22652C87C009FE0E8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 400A71F12652C87C009FE0E8 /* Preview Assets.xcassets */; };
 		400A71FA2652C891009FE0E8 /* ComicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400A71F92652C891009FE0E8 /* ComicModel.swift */; };
 		400A71FC2652CA02009FE0E8 /* ComicViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400A71FB2652CA02009FE0E8 /* ComicViewModel.swift */; };
-		40150FEE26592FF300F27B1F /* CustomSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40150FED26592FF300F27B1F /* CustomSearchBar.swift */; };
+		40150FEE26592FF300F27B1F /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40150FED26592FF300F27B1F /* SearchBar.swift */; };
 		40150FF02659304C00F27B1F /* ComicsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40150FEF2659304C00F27B1F /* ComicsGridView.swift */; };
 		4026907426545942004F2AD1 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4026907326545942004F2AD1 /* String+Extension.swift */; };
 		4026907A2654CB36004F2AD1 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402690792654CB36004F2AD1 /* SafariView.swift */; };
@@ -49,7 +49,7 @@
 		400A71F32652C87C009FE0E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		400A71F92652C891009FE0E8 /* ComicModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicModel.swift; sourceTree = "<group>"; };
 		400A71FB2652CA02009FE0E8 /* ComicViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicViewModel.swift; sourceTree = "<group>"; };
-		40150FED26592FF300F27B1F /* CustomSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchBar.swift; sourceTree = "<group>"; };
+		40150FED26592FF300F27B1F /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		40150FEF2659304C00F27B1F /* ComicsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicsGridView.swift; sourceTree = "<group>"; };
 		4026907326545942004F2AD1 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		402690792654CB36004F2AD1 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
@@ -243,7 +243,7 @@
 		40A3845126D9827300AAA4AB /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
-				40150FED26592FF300F27B1F /* CustomSearchBar.swift */,
+				40150FED26592FF300F27B1F /* SearchBar.swift */,
 				40CC0E4F265AC65000F4980F /* QuickActionButtons.swift */,
 				40CC0E4D265AC36300F4980F /* ComicDescription.swift */,
 				4026908C26559CE7004F2AD1 /* ComicDetailView.swift */,
@@ -377,7 +377,7 @@
 				402690842655102B004F2AD1 /* AsyncImage.swift in Sources */,
 				4026908B26559C3E004F2AD1 /* BrowseView.swift in Sources */,
 				4026908D26559CE7004F2AD1 /* ComicDetailView.swift in Sources */,
-				40150FEE26592FF300F27B1F /* CustomSearchBar.swift in Sources */,
+				40150FEE26592FF300F27B1F /* SearchBar.swift in Sources */,
 				4026908926559BEC004F2AD1 /* HomeView.swift in Sources */,
 				4026907E2654D313004F2AD1 /* PinchZoomView.swift in Sources */,
 				40CC0E4E265AC36300F4980F /* ComicDescription.swift in Sources */,

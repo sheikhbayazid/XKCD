@@ -1,5 +1,5 @@
 //
-//  CustomSearchBar.swift
+//  SearchBar.swift
 //  XKCD
 //
 //  Created by Sheikh Bayazid on 5/22/21.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CustomSearchBar: View {
+struct SearchBar: View {
     @ObservedObject var viewModel: ComicViewModel
     
     var body: some View {
@@ -38,9 +38,9 @@ struct CustomSearchBar: View {
     }
 }
 
-struct CustomSearchBar_Previews: PreviewProvider {
+struct SearchBar_Previews: PreviewProvider {
     static var previews: some View {
-        CustomSearchBar(viewModel: ComicViewModel())
+        SearchBar(viewModel: ComicViewModel())
             .padding()
             .previewLayout(.sizeThatFits)
     }
