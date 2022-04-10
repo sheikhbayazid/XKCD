@@ -29,7 +29,7 @@ struct ComicDetailView: View {
         }
         .padding(.vertical)
         .navigationBarTitle(Text(title), displayMode: .inline)
-        .navigationBarItems(trailing: CustomButtons(comic: comic, imageURL: imageURL))
+        .navigationBarItems(trailing: QuickActionButtons(comic: comic, imageURL: imageURL))
     }
 }
 

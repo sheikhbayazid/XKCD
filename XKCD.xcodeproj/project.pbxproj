@@ -37,7 +37,7 @@
 		40A3844F26D96D9400AAA4AB /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A3844E26D96D9400AAA4AB /* CustomNavigationBar.swift */; };
 		40AB42BD2803020B00EEFDA0 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AB42BC2803020B00EEFDA0 /* View+Extension.swift */; };
 		40CC0E4E265AC36300F4980F /* ComicDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CC0E4D265AC36300F4980F /* ComicDescription.swift */; };
-		40CC0E50265AC65000F4980F /* CustomButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CC0E4F265AC65000F4980F /* CustomButtons.swift */; };
+		40CC0E50265AC65000F4980F /* QuickActionButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CC0E4F265AC65000F4980F /* QuickActionButtons.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,7 +73,7 @@
 		40A3844E26D96D9400AAA4AB /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		40AB42BC2803020B00EEFDA0 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		40CC0E4D265AC36300F4980F /* ComicDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDescription.swift; sourceTree = "<group>"; };
-		40CC0E4F265AC65000F4980F /* CustomButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtons.swift; sourceTree = "<group>"; };
+		40CC0E4F265AC65000F4980F /* QuickActionButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionButtons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -244,7 +244,7 @@
 			isa = PBXGroup;
 			children = (
 				40150FED26592FF300F27B1F /* CustomSearchBar.swift */,
-				40CC0E4F265AC65000F4980F /* CustomButtons.swift */,
+				40CC0E4F265AC65000F4980F /* QuickActionButtons.swift */,
 				40CC0E4D265AC36300F4980F /* ComicDescription.swift */,
 				4026908C26559CE7004F2AD1 /* ComicDetailView.swift */,
 				40150FEF2659304C00F27B1F /* ComicsGridView.swift */,
@@ -371,7 +371,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4055A7EA265A344100EC55ED /* FavoriteDetailView.swift in Sources */,
-				40CC0E50265AC65000F4980F /* CustomButtons.swift in Sources */,
+				40CC0E50265AC65000F4980F /* QuickActionButtons.swift in Sources */,
 				402690852655102B004F2AD1 /* ImageCache.swift in Sources */,
 				4055A7C22659850A00EC55ED /* ComicLabelView.swift in Sources */,
 				402690842655102B004F2AD1 /* AsyncImage.swift in Sources */,
