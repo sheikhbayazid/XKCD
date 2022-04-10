@@ -81,10 +81,7 @@ struct FavoriteDetailView: View {
             
             Spacer()
         }
-        .padding(.horizontal, 15)
-        .padding(.vertical, 10)
-        .background(Color.secondary.opacity(0.1))
-        .cornerRadius(10)
+        .grayBackgrund()
     }
     
     private var navigationTitle: String {

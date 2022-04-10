@@ -1,5 +1,5 @@
 //
-//  CustomButtons.swift
+//  QuickActionButtons.swift
 //  XKCD
 //
 //  Created by Sheikh Bayazid on 5/23/21.
@@ -7,9 +7,11 @@
 
 import SwiftUI
 
-struct CustomButtons: View {
+struct QuickActionButtons: View {
     @Environment(\.managedObjectContext) private var moc
-    @FetchRequest(entity: Favorite.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Favorite.title, ascending: true)]) var favorites: FetchedResults<Favorite>
+    @FetchRequest(entity: Favorite.entity(),
+                  sortDescriptors: [NSSortDescriptor(keyPath: \Favorite.title,
+                                                     ascending: true)]) var favorites: FetchedResults<Favorite>
     
     let comic: ComicResponse
     var imageURL: String
@@ -77,9 +79,9 @@ struct CustomButtons: View {
     }
 }
 
-struct CustomButtons_Previews: PreviewProvider {
+struct QuickActionButtons_Previews: PreviewProvider {
     static var previews: some View {
-        CustomButtons(comic: ComicResponse.example, imageURL: "")
+        QuickActionButtons(comic: ComicResponse.example, imageURL: "")
             .padding()
             .previewLayout(.sizeThatFits)
     }

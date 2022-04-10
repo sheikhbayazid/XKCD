@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - All Comics - https://api.xkcdy.com/comics - This API returns a all the comics available in xkcd
-// MARK: - NOTE: This server fails often, if there's any decoding error then this server failed
+// NOTE: This api often returns error, if there's any decoding error then this server failed
 struct ComicResponse: Identifiable, Decodable, Comparable {
     let id: Int
     let safeTitle: String
@@ -23,7 +23,17 @@ struct ComicResponse: Identifiable, Decodable, Comparable {
         lhs.id < rhs.id
     }
     
-    static let example = ComicResponse(id: 1, safeTitle: "safeTitle", title: "title", transcript: "transcript", alt: "In Dimensional Chess, every move is annotated", sourceUrl: "sourceUrl", explainUrl: "explainUrl", imgs: [ImageDetails(height: 250, width: 250, sourceUrl: "www.apple.com")])
+    static let example = ComicResponse(id: 1,
+                                       safeTitle: "safeTitle",
+                                       title: "title",
+                                       transcript: "transcript",
+                                       alt: "In Dimensional Chess, every move is annotated",
+                                       sourceUrl: "sourceUrl",
+                                       explainUrl: "explainUrl",
+                                       imgs: [ImageDetails(height: 250,
+                                                           width: 250,
+                                                           sourceUrl: "www.apple.com")]
+    )
 }
 
 struct ImageDetails: Decodable, Hashable {
@@ -45,6 +55,14 @@ struct Comic: Decodable {
     let day: String
     
     static var example: Comic {
-        Comic(month: "", num: 0, year: "", safe_title: "", alt: "", transcript: "", img: "", title: "", day: "")
+        Comic(month: "",
+              num: 0,
+              year: "",
+              safe_title: "",
+              alt: "",
+              transcript: "",
+              img: "",
+              title: "",
+              day: "")
     }
 }

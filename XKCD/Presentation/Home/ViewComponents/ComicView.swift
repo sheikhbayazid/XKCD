@@ -18,7 +18,7 @@ struct ComicView: View {
             
             Group {
                 if !comic.img.isEmpty {
-                    imageView()
+                    imageView(url: comic.img).cornerRadius(5)
                     ComicLabelView(comic: comic)
                     
                     Divider()
@@ -28,28 +28,9 @@ struct ComicView: View {
         .onAppear(perform: loadComic)
     }
     
-    @ViewBuilder
-    private func imageView() -> some View {
-        AsyncImage(url: URL(string: comic.img)!, placeholder: loadingView) { image in
-            Image(uiImage: image)
-                .resizable()
-        }
-        .aspectRatio(contentMode: .fit)
-        .cornerRadius(5)
-        .frame(maxWidth: Screen.width)
-        .pinchToZoom()
-    }
-    
-    @ViewBuilder
-    private func loadingView() -> some View {
-        ZStack {
-            Color.gray.opacity(0.15)
-            ProgressView()
-        }
-    }
-    
     private func loadComic() {
-        NetworkManager.shared.fetchData(endpoint: .singleComic(comicNumber), type: Comic.self) { result in
+        NetworkManager.shared.fetchData(endpoint: .singleComic(comicNumber),
+                                        type: Comic.self) { result in
             
             switch result {
             case .success(let comic):

@@ -13,7 +13,7 @@ struct BrowseView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 5) {
-                CustomSearchBar(viewModel: viewModel)
+                SearchBar(viewModel: viewModel)
                 
                 Group {
                     if viewModel.serverError {
@@ -27,21 +27,6 @@ struct BrowseView: View {
             .navigationBarHidden(true)
             .padding(.horizontal)
             .padding(.vertical, 5)
-        }
-    }
-    
-    @ViewBuilder
-    private func errorMessage() -> some View {
-        Group {
-            Spacer()
-            
-            Text("Something went wrong. Please try again later.")
-                .fontWeight(.medium)
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-                .padding(.horizontal)
-            
-            Spacer()
         }
     }
 }

@@ -74,7 +74,7 @@ struct FavoritesView: View {
     private func navigationView() -> some View {
         HStack {
             Text("Favorites")
-                .font(.custom("xkcd", size: 26))
+                .font(.xkcd(size: 26))
             
             Spacer()
             

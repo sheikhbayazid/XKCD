@@ -5,8 +5,9 @@
 //  Created by Sheikh Bayazid on 5/17/21.
 //
 
-import Foundation
+import Combine
 import SwiftUI
+import Foundation
 
 enum Sort: Int, Identifiable, CaseIterable {
     case latest
@@ -16,35 +17,51 @@ enum Sort: Int, Identifiable, CaseIterable {
 }
 
 final class ComicViewModel: ObservableObject {
+    private var cancellables = Set<AnyCancellable>()
+    
     @Published private(set) var comics = [ComicResponse]()
-    @AppStorage("totalComics") private(set) var totalComics = 2508
+    @AppStorage("totalComics") private(set) var comicCount = 2508
+    
+    @Published private(set) var serverError = false
+    lazy var totalComics = Array(stride(from: comicCount, to: 1, by: -1))
     
     @Published var searchText = ""
     @Published var sort: Sort = .latest
     
-    @Published private(set) var serverError = false
-    
-    init() { fetchAllComics() }
+    init() {
+        fetchAllComics()
+        
+        $sort
+            .receive(on: RunLoop.main)
+            .sink { sort in
+                switch sort {
+                case .latest:
+                    self.totalComics = Array(stride(from: self.comicCount, to: 1, by: -1))
+                case .earliest:
+                    self.totalComics = Array(1...self.comicCount)
+                }
+            }
+            .store(in: &cancellables)
+    }
     
     func fetchAllComics() {
         NetworkManager.shared.fetchData(endpoint: .allComics, type: [ComicResponse].self) { result in
-            switch result {
-            case .success(let comics):
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let comics):
                     self.comics = comics
-                    self.totalComics = comics.count + 4
+                    self.comicCount = comics.count + 4
                     // We get -4 items from this endpoint compared to actual total items. So adding 4
-                }
-            case .failure(let error):
-                print(error)
-                DispatchQueue.main.async {
+                    
+                case .failure(let error):
+                    print(error)
                     self.serverError = true
                 }
             }
         }
     }
     
-    // MARK: - TabBar Items
+    // TabBar Items
     @ViewBuilder
     func home() -> some View {
         Group {

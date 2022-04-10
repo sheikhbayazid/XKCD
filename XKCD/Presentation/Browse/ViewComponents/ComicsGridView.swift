@@ -16,7 +16,8 @@ struct ComicsGridView: View {
             LazyVGrid(columns: columns) {
                 ForEach(sortedFilteredComics) { comic in
                     NavigationLink(destination: ComicDetailView(comic)) {
-                        imageView(comic)
+                        imageView(url: getImageURL(comic.imgs))
+                            .overlay(overlayLabel(comic.id), alignment: .topLeading)
                     }
                 }
             }
@@ -24,19 +25,8 @@ struct ComicsGridView: View {
     }
     
     @ViewBuilder
-    private func imageView(_ comic: ComicResponse) -> some View {
-        AsyncImage(url: URL(string: getImageURL(comic.imgs))!,
-                   placeholder: { Color.gray.opacity(0.15) }) { image in
-            Image(uiImage: image)
-                .resizable()
-        }
-        .aspectRatio(contentMode: .fit)
-        .overlay(overlayLabel(comic.id), alignment: .topLeading)
-    }
-    
-    @ViewBuilder
     private func overlayLabel(_ comicID: Int) -> some View {
-        Text("\(comicID)")
+        Text(comicID.description)
             .font(.footnote)
             .foregroundColor(.white)
             .padding(.horizontal, 8)

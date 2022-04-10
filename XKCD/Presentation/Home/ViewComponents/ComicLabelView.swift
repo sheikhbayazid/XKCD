@@ -9,7 +9,9 @@ import SwiftUI
 
 struct ComicLabelView: View {
     @Environment(\.managedObjectContext) private var moc
-    @FetchRequest(entity: Favorite.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Favorite.title, ascending: true)]) var favorites: FetchedResults<Favorite>
+    @FetchRequest(entity: Favorite.entity(),
+                  sortDescriptors: [NSSortDescriptor(keyPath: \Favorite.title,
+                                                     ascending: true)]) var favorites: FetchedResults<Favorite>
     
     @State private var isFavorite = false
     @State private var isShareSheetShowing = false
@@ -20,12 +22,12 @@ struct ComicLabelView: View {
     var body: some View {
         
         VStack(spacing: 10) {
-            horizontalButtons()
+            quickActionButtons()
             
             HStack {
                 VStack(alignment: .leading, spacing: 5) {
-                    comicTitleAndAltView()
-                    comicExplanationView()
+                    titleAndAltView()
+                    explanationView()
                 }
                 
                 Spacer()
@@ -35,7 +37,7 @@ struct ComicLabelView: View {
     }
     
     @ViewBuilder
-    private func horizontalButtons() -> some View {
+    private func quickActionButtons() -> some View {
         HStack {
             Button(action: openShareSheet) {
                 Image(systemName: "square.and.arrow.up")
@@ -51,7 +53,7 @@ struct ComicLabelView: View {
     }
     
     @ViewBuilder
-    private func comicTitleAndAltView() -> some View {
+    private func titleAndAltView() -> some View {
         Group {
             Text(comicTitle)
                 .fontWeight(.medium)
@@ -61,7 +63,7 @@ struct ComicLabelView: View {
     }
     
     @ViewBuilder
-    private func comicExplanationView() -> some View {
+    private func explanationView() -> some View {
         HStack(spacing: 5) {
             Text("Go to comic")
             Text("explanation")
