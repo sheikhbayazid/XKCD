@@ -23,6 +23,17 @@ extension View {
     }
     
     @ViewBuilder
+    func imageView(url: String) -> some View {
+        AsyncImage(url: URL(string: url)!, placeholder: loadingView) {
+            Image(uiImage: $0)
+                .resizable()
+        }
+        .aspectRatio(contentMode: .fit)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .pinchToZoom()
+    }
+    
+    @ViewBuilder
     func loadingView() -> some View {
         ZStack {
             Color.gray.opacity(0.15)
@@ -33,9 +44,9 @@ extension View {
     @ViewBuilder
     func grayBackgrund() -> some View {
         self
-        .padding(.horizontal, 16)
-        .padding(.vertical, 10)
-        .background(Color.gray.opacity(0.2))
-        .clipShape(RoundedRectangle(cornerRadius: 10))
+            .padding(.horizontal, 16)
+            .padding(.vertical, 10)
+            .background(Color.gray.opacity(0.2))
+            .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 }

@@ -23,6 +23,7 @@ struct ComicDetailView: View {
         ScrollView {
             VStack(spacing: 20) {
                 imageView(url: imageURL)
+                    .padding(.top, 16)
                 ComicDescription(comic: comic)
             }
         }
@@ -44,17 +45,5 @@ extension ComicDetailView {
     
     private var title: String {
         "\(comic.id): " + comic.title
-    }
-    
-    @ViewBuilder
-    private func imageView(url: String) -> some View {
-        AsyncImage(url: URL(string: url)!, placeholder: loadingView) { image in
-            Image(uiImage: image)
-                .resizable()
-        }
-        .aspectRatio(contentMode: .fit)
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .padding(.top, 15)
-        .pinchToZoom()
     }
 }
