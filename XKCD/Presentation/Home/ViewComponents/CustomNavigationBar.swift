@@ -17,16 +17,7 @@ struct CustomNavigationBar: View {
                     .font(.custom("xkcd", size: 26))
                 
                 Spacer()
-                
-                Menu {
-                    Picker(selection: $sort, label: Text("Filter options")) {
-                        Text("Latest").tag(Sort.latest)
-                        Text("Earliest").tag(Sort.earliest)
-                    }
-                } label: {
-                    Image(systemName: "line.horizontal.3.decrease.circle")
-                        .font(.title)
-                }
+                sortMenu(sort: $sort)
             }
             .padding(.horizontal)
             .padding(.vertical, 10)

@@ -32,15 +32,7 @@ struct CustomSearchBar: View {
                 .clipShape(RoundedRectangle(cornerRadius: 10))
             }
             
-            Menu {
-                Picker(selection: $viewModel.sort, label: Text("Sort by")) {
-                    Text("Latest").tag(Sort.latest)
-                    Text("Earliest").tag(Sort.earliest)
-                }
-            } label: {
-                Image(systemName: "line.horizontal.3.decrease.circle")
-                    .font(.title)
-            }
+            sortMenu(sort: $viewModel.sort)
         }
     }
     
