@@ -12,16 +12,33 @@ struct HomeView: View {
     
     var body: some View {
         VStack(spacing: 10) {
-            CustomNavigationBar(sort: $viewModel.sort)
+            navigationBar()
             
             ScrollView {
                 LazyVStack {
                     ForEach(viewModel.totalComics, id: \.self) { number in
                         ComicView(comicNumber: number)
+                            .animation(.easeIn, value: viewModel.comics)
                     }
                 }
             }
-            .animation(.easeIn, value: viewModel.comics)
+        }
+    }
+    
+    @ViewBuilder
+    private func navigationBar() -> some View {
+        VStack {
+            HStack {
+                Text("XKCD Comics")
+                    .font(.xkcd(size: 26))
+                
+                Spacer()
+                sortMenu(sort: $viewModel.sort)
+            }
+            .padding(.horizontal)
+            .padding(.vertical, 10)
+            
+            Divider()
         }
     }
 }

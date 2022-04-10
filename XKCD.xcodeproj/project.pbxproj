@@ -34,8 +34,8 @@
 		4055A7E82659A11500EC55ED /* XKCD.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4055A7E62659A11500EC55ED /* XKCD.xcdatamodeld */; };
 		4055A7EA265A344100EC55ED /* FavoriteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4055A7E9265A344100EC55ED /* FavoriteDetailView.swift */; };
 		4077BB6226DB586B00CEFA84 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4077BB6126DB586B00CEFA84 /* NetworkManager.swift */; };
-		40A3844F26D96D9400AAA4AB /* CustomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A3844E26D96D9400AAA4AB /* CustomNavigationBar.swift */; };
 		40AB42BD2803020B00EEFDA0 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AB42BC2803020B00EEFDA0 /* View+Extension.swift */; };
+		40AB42BF2803123E00EEFDA0 /* Font+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AB42BE2803123E00EEFDA0 /* Font+Extension.swift */; };
 		40CC0E4E265AC36300F4980F /* ComicDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CC0E4D265AC36300F4980F /* ComicDescription.swift */; };
 		40CC0E50265AC65000F4980F /* QuickActionButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CC0E4F265AC65000F4980F /* QuickActionButtons.swift */; };
 /* End PBXBuildFile section */
@@ -70,8 +70,8 @@
 		4055A7E72659A11500EC55ED /* XKCD.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = XKCD.xcdatamodel; sourceTree = "<group>"; };
 		4055A7E9265A344100EC55ED /* FavoriteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteDetailView.swift; sourceTree = "<group>"; };
 		4077BB6126DB586B00CEFA84 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		40A3844E26D96D9400AAA4AB /* CustomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationBar.swift; sourceTree = "<group>"; };
 		40AB42BC2803020B00EEFDA0 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
+		40AB42BE2803123E00EEFDA0 /* Font+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extension.swift"; sourceTree = "<group>"; };
 		40CC0E4D265AC36300F4980F /* ComicDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDescription.swift; sourceTree = "<group>"; };
 		40CC0E4F265AC65000F4980F /* QuickActionButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickActionButtons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -152,6 +152,7 @@
 			children = (
 				4026907326545942004F2AD1 /* String+Extension.swift */,
 				40AB42BC2803020B00EEFDA0 /* View+Extension.swift */,
+				40AB42BE2803123E00EEFDA0 /* Font+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -235,7 +236,6 @@
 			children = (
 				4026909026559E57004F2AD1 /* ComicView.swift */,
 				4055A7C12659850A00EC55ED /* ComicLabelView.swift */,
-				40A3844E26D96D9400AAA4AB /* CustomNavigationBar.swift */,
 			);
 			path = ViewComponents;
 			sourceTree = "<group>";
@@ -388,7 +388,6 @@
 				4026909626559F50004F2AD1 /* FavoritesView.swift in Sources */,
 				402690862655102B004F2AD1 /* EnvironmentValues+ImageCache.swift in Sources */,
 				400A71FA2652C891009FE0E8 /* ComicModel.swift in Sources */,
-				40A3844F26D96D9400AAA4AB /* CustomNavigationBar.swift in Sources */,
 				400A71FC2652CA02009FE0E8 /* ComicViewModel.swift in Sources */,
 				4026907426545942004F2AD1 /* String+Extension.swift in Sources */,
 				4026909126559E57004F2AD1 /* ComicView.swift in Sources */,
@@ -397,6 +396,7 @@
 				4026907A2654CB36004F2AD1 /* SafariView.swift in Sources */,
 				400A71EB2652C877009FE0E8 /* XKCDApp.swift in Sources */,
 				40AB42BD2803020B00EEFDA0 /* View+Extension.swift in Sources */,
+				40AB42BF2803123E00EEFDA0 /* Font+Extension.swift in Sources */,
 				4026907C2654CBAA004F2AD1 /* ShareSheetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
