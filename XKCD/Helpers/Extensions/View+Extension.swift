@@ -49,4 +49,19 @@ extension View {
             .background(Color.gray.opacity(0.2))
             .clipShape(RoundedRectangle(cornerRadius: 10))
     }
+    
+    @ViewBuilder
+    func errorMessage() -> some View {
+        Group {
+            Spacer()
+            
+            Text("Something went wrong. Please try again later.")
+                .fontWeight(.medium)
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+                .padding(.horizontal)
+            
+            Spacer()
+        }
+    }
 }

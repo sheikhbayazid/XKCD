@@ -150,9 +150,9 @@
 		402690772654C83F004F2AD1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				4026907326545942004F2AD1 /* String+Extension.swift */,
-				40AB42BC2803020B00EEFDA0 /* View+Extension.swift */,
 				40AB42BE2803123E00EEFDA0 /* Font+Extension.swift */,
+				40AB42BC2803020B00EEFDA0 /* View+Extension.swift */,
+				4026907326545942004F2AD1 /* String+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";

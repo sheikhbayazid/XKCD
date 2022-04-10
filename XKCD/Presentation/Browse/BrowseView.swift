@@ -29,21 +29,6 @@ struct BrowseView: View {
             .padding(.vertical, 5)
         }
     }
-    
-    @ViewBuilder
-    private func errorMessage() -> some View {
-        Group {
-            Spacer()
-            
-            Text("Something went wrong. Please try again later.")
-                .fontWeight(.medium)
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-                .padding(.horizontal)
-            
-            Spacer()
-        }
-    }
 }
 
 struct BrowseView_Previews: PreviewProvider {
