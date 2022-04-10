@@ -243,8 +243,8 @@
 		40A3845126D9827300AAA4AB /* ViewComponents */ = {
 			isa = PBXGroup;
 			children = (
-				40CC0E4F265AC65000F4980F /* CustomButtons.swift */,
 				40150FED26592FF300F27B1F /* CustomSearchBar.swift */,
+				40CC0E4F265AC65000F4980F /* CustomButtons.swift */,
 				40CC0E4D265AC36300F4980F /* ComicDescription.swift */,
 				4026908C26559CE7004F2AD1 /* ComicDetailView.swift */,
 				40150FEF2659304C00F27B1F /* ComicsGridView.swift */,

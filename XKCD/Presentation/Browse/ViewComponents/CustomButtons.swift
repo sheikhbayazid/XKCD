@@ -9,7 +9,9 @@ import SwiftUI
 
 struct CustomButtons: View {
     @Environment(\.managedObjectContext) private var moc
-    @FetchRequest(entity: Favorite.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \Favorite.title, ascending: true)]) var favorites: FetchedResults<Favorite>
+    @FetchRequest(entity: Favorite.entity(),
+                  sortDescriptors: [NSSortDescriptor(keyPath: \Favorite.title,
+                                                     ascending: true)]) var favorites: FetchedResults<Favorite>
     
     let comic: ComicResponse
     var imageURL: String
