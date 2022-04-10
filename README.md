@@ -2,7 +2,8 @@
 XKCD Comic Viewer SwiftUI
 
 ## App Breakdown
- * Architechture: MVVM
+ * Architecture: MVVM
+ * Use of Combine framework
  * Persistance: CoreData
  * Coding style: SwiftLint
  * Asynchronous image loading
