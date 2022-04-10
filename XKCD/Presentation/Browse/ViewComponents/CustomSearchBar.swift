@@ -26,10 +26,7 @@ struct CustomSearchBar: View {
                         }
                     }
                 }
-                .padding(.horizontal, 15)
-                .padding(.vertical, 10)
-                .background(Color.gray.opacity(0.2))
-                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .grayBackgrund()
             }
             
             sortMenu(sort: $viewModel.sort)

@@ -33,8 +33,9 @@ extension View {
     @ViewBuilder
     func grayBackgrund() -> some View {
         self
-        .padding(16)
-        .background(Color.secondary.opacity(0.1))
-        .cornerRadius(10)
+        .padding(.horizontal, 16)
+        .padding(.vertical, 10)
+        .background(Color.gray.opacity(0.2))
+        .clipShape(RoundedRectangle(cornerRadius: 10))
     }
 }

@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ComicDetailView: View {
+    private var imageURL = ""
     let comic: ComicResponse
-    var imageURL = ""
     
     init(_ comic: ComicResponse) {
         self.comic = comic
